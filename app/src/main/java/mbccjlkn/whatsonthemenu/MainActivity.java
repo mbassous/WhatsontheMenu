@@ -19,12 +19,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void cafe(View view){
-        Intent I = new Intent(this, DiningHallSelection.class);
+        Intent I = new Intent(this, CafeSelection.class);
         startActivity(I);
     }
 
     public void foodTrucks(View view){
-        Intent I = new Intent(this, DiningHallSelection.class);
+        Intent I = new Intent(this, FoodTruckSelection.class);
+        startActivity(I);
+    }
+
+    public void map(View view){
+        Intent I = new Intent(this, Map.class);
         startActivity(I);
     }
 }

@@ -18,7 +18,9 @@
         </activity>
         <activity android:name=".DiningHallSelection" />
         <activity android:name=".CafeSelection" />
-        <activity android:name=".FoodTruckSelection"></activity>
+        <activity android:name=".FoodTruckSelection" />
+        <activity android:name=".Map" />
+        <activity android:name=".DHDisplay"></activity>
     </application>
 
 </manifest>
