@@ -6,4 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".Map">
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="200sp"
+        android:layout_height="100sp"
+        android:layout_marginTop="148dp"
+        android:layout_marginEnd="326dp"
+        android:layout_marginRight="326dp"
+        android:layout_marginBottom="1dp"
+        android:text="In Map Activity"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>
