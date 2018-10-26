@@ -6,4 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".FoodTruckSelection">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/RaymondCateringBTN"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="Raymond's Catering"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/CruzGourmetBTN"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="Cruz N Gourmet"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="Kevins Mom"
+            android:textSize="30sp" />
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>
