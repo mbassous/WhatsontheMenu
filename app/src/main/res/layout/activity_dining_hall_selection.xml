@@ -6,4 +6,53 @@
     android:layout_height="match_parent"
     tools:context=".DiningHallSelection">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/CowellStevensonDH"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="Cowell/Stevenson"
+            android:onClick="startDHActivity"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="Rachel Carson/Oakes"
+            android:onClick="startDHActivity"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="College 9/10"
+            android:onClick="startDHActivity"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/PorterKresgeDH"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="Porter/Kresge"
+            android:onClick="startDHActivity"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/CrownMerrillDH"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="Crown/Merrill"
+            android:onClick="startDHActivity"
+            android:textSize="25sp" />
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

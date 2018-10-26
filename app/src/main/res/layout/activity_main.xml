@@ -44,6 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="125dp"
             android:text="Map"
+            android:onClick="map"
             android:textSize="35sp" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
