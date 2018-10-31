@@ -22,22 +22,10 @@
                 android:text="Banana Joe's" />
 
             <Button
-                android:id="@+id/OwlsNest"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Owl's Nest" />
-
-            <Button
-                android:id="@+id/OakesCafe"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Oakes Cafe" />
-
-            <Button
-                android:id="@+id/StevensonCoffeeHouse"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Stevenson Coffee House" />
+                android:id="@+id/Bowls"
+                android:layout_width="400dp"
+                android:layout_height="50sp"
+                android:text="Bowls (Porter)" />
 
             <Button
                 android:id="@+id/College8Cafe"
@@ -46,16 +34,22 @@
                 android:text="College 8 Cafe" />
 
             <Button
+                android:id="@+id/CowellCoffeeShop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cowell Coffee Shop" />
+
+            <Button
+                android:id="@+id/ExpressStore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Express Store" />
+
+            <Button
                 android:id="@+id/McHenryCafe"
                 android:layout_width="400sp"
                 android:layout_height="50sp"
                 android:text="Global Village Cafe (McHenry)" />
-
-            <Button
-                android:id="@+id/Bowls"
-                android:layout_width="400dp"
-                android:layout_height="50sp"
-                android:text="Bowls (Porter)" />
 
             <Button
                 android:id="@+id/IvetaCafe"
@@ -64,22 +58,65 @@
                 android:text="Iveta" />
 
             <Button
-                android:id="@+id/CowellCoffeeShop"
+                android:id="@+id/KresgeCoop"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Cowell Coffee Shop" />
+                android:text="Kresge Co-op" />
 
             <Button
-                android:id="@+id/VivasMexicanRestaurant"
+                android:id="@+id/OakesCafe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Vivas Mexican Restaurant" />
+                android:text="Oakes Cafe" />
+
+            <Button
+                android:id="@+id/OwlsNest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Owl's Nest" />
+
+            <Button
+                android:id="@+id/PerkCoffeeBaskin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="cafe"
+                android:text="Perk Coffee Bar (J Baskin)" />
+
+            <Button
+                android:id="@+id/PerkCoffeeEAM"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Perk Coffee (Earth and Marine)" />
+
+            <Button
+                android:id="@+id/PerkCoffeePhys"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Perk Coffee (Physical Sciences)" />
+
+            <Button
+                android:id="@+id/PerkCoffeeTerraFresca"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Perk Coffee (Terra Fresca)" />
+
+            <Button
+                android:id="@+id/StevensonCoffeeHouse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Stevenson Coffee House" />
 
             <Button
                 android:id="@+id/TerraFresca"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Terra Fresca" />
+
+            <Button
+                android:id="@+id/VivasMexicanRestaurant"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Vivas Mexican Restaurant" />
 
         </LinearLayout>
     </ScrollView>

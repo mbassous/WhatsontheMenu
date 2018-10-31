@@ -20,7 +20,14 @@
         <activity android:name=".CafeSelection" />
         <activity android:name=".FoodTruckSelection" />
         <activity android:name=".Map" />
-        <activity android:name=".DHDisplay"></activity>
+        <activity
+            android:name=".DHDisplay"
+            android:label="@string/title_activity_dhdisplay"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CafeDisplay"
+            android:label="@string/title_activity_cafe_display"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
