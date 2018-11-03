@@ -27,6 +27,10 @@
         <activity
             android:name=".CafeDisplay"
             android:label="@string/title_activity_cafe_display"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".FoodTruckDisplay"
+            android:label="@string/title_activity_food_truck_display"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
