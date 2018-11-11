@@ -38,7 +38,9 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String KEY_EATERY_HOURS = "hours";
     private static final String KEY_EATERY_CARD = "card";
     private static final String KEY_EATERY_FLEXIS = "flexis";
+    private static final String KEY_EATERY_MEALS = "meals";
     private static final String KEY_EATERY_FAVORITE = "favorite";
+    private static final String KEY_EATERY_PHONE = "phone_number";
 
     //Constructor
     public DBHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version){
@@ -59,7 +61,9 @@ public class DBHelper extends SQLiteOpenHelper {
                 + KEY_EATERY_HOURS + " String, "
                 + KEY_EATERY_CARD + " integer, "
                 + KEY_EATERY_FLEXIS + " integer, "
-                + KEY_EATERY_FAVORITE + "integer);");
+                + KEY_EATERY_MEALS + " integer, "
+                + KEY_EATERY_FAVORITE + " integer, "
+                + KEY_EATERY_PHONE + " String);");
 
         Toast.makeText(ctx, "Database created", Toast.LENGTH_LONG).show();
     }
@@ -86,15 +90,17 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
-    public long insertEatery(String name, String hours, int card, int flexis, int favorite){
+    public void insertEatery(String name, String hours, Integer card, Integer flexis, Integer meals, Integer favorite, String phone){
         db = getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(KEY_EATERY_NAME, name);
         contentValues.put(KEY_EATERY_HOURS, hours);
         contentValues.put(KEY_EATERY_CARD, card);
         contentValues.put(KEY_EATERY_FLEXIS, flexis);
+        contentValues.put(KEY_EATERY_MEALS, meals);
         contentValues.put(KEY_EATERY_FAVORITE, favorite);
-        return db.insert(TABLE_EATERY, null, contentValues);
+        contentValues.put(KEY_EATERY_PHONE, phone);
+        db.insert(TABLE_EATERY, null, contentValues);
     }
 
     public ArrayList<String> viewFood(int place){
@@ -145,8 +151,12 @@ public class DBHelper extends SQLiteOpenHelper {
                     + cr.getString(2) + "|"
                     + cr.getString(3) + "|"
                     + cr.getString(4) + "|"
-                    + cr.getString(5) + "|");
+                    + cr.getString(5) + "|"
+                    + cr.getString(6) + "|"
+                    + cr.getString(7) + "|");
         }
+
+        Toast.makeText(ctx, menu.toString(), Toast.LENGTH_LONG).show();
         return menu;
     }
 }
