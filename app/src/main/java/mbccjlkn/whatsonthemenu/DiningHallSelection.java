@@ -3,6 +3,7 @@ package mbccjlkn.whatsonthemenu;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 public class DiningHallSelection extends AppCompatActivity {
@@ -14,9 +15,9 @@ public class DiningHallSelection extends AppCompatActivity {
     }
 
     public void startDHActivity(View view){
+        String name = view.getTag().toString();
         Intent I = new Intent(this, DHDisplay.class);
         startActivity(I);
     }
-
 
 }

@@ -7,14 +7,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-public class DHDisplay extends AppCompatActivity {
-
-    public boolean fav = false;
+public class FoodTruckDisplay extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dhdisplay);
+        setContentView(R.layout.activity_food_truck_display);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -22,17 +20,9 @@ public class DHDisplay extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!fav) {
-                    Snackbar.make(view, "Added to favorites", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-                    fav = true;
-                } else {
-                    Snackbar.make(view, "Added to favorites", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-                    fav = false;
-                }
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
             }
         });
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 }
