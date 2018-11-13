@@ -25,13 +25,11 @@
             android:label="@string/title_activity_dhdisplay"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".CafeDisplay"
-            android:label="@string/title_activity_cafe_display"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".FoodTruckDisplay"
             android:label="@string/title_activity_food_truck_display"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".CafeDisplay" />
+        <activity android:name=".OakesDisplay"></activity>
     </application>
 
 </manifest>

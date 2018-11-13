@@ -8,7 +8,6 @@ import android.widget.Spinner;
 
 public class CafeSelection extends AppCompatActivity {
 
-    //Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,8 +16,12 @@ public class CafeSelection extends AppCompatActivity {
     }
 
     public void cafe(View view){
-        Intent I = new Intent(this, CafeSelection.class);
+        Intent I = new Intent(this, CafeDisplay.class);
         startActivity(I);
     }
 
+    public void oakes(View view){
+        Intent I = new Intent(this, OakesDisplay.class);
+        startActivity(I);
+    }
 }

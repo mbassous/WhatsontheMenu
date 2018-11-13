@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        db = new DBHelper(this, "WOTM_DB",null, 1);
         initializeEateryTable();
     }
 
@@ -50,18 +50,20 @@ public class MainActivity extends AppCompatActivity {
         //Log.d("bananas", "initializeEateryTable:" + eateryInfo[3].length);
         //Log.d("bananas", "initializeEateryTable:" + eateryInfo[4].length);
         //Log.d("bananas", "initializeEateryTable:" + eateryInfo[5].length);
-        for(int i = 0; i < 2 /* eateryInfo.length */; i++){
+        for(int i = 0; i < eateryInfo.length; i++){
 
-            Log.d("bananas", "initializeEateryTable: Table Contents "/*+ eateryInfo[i].toString()*/);
+            /*Log.d("bananas", "initializeEateryTable: Table Contents "/*+ eateryInfo[i].toString());
             if (i != 0) {
-                Log.d("bananas", "initializeEateryTable: Table Contents "/*+ eateryInfo[i].toString()*/);
+                Log.d("bananas", "initializeEateryTable: Table Contents "/*+ eateryInfo[i].toString());
                 for (int j = 0; j < 8; j++) {
-                    Log.d("bananas", "initializeEateryTable: " + j + " " + eateryInfo[i][j]   /*+ eateryInfo[i].toString()*/);
+                    Log.d("bananas", "initializeEateryTable: " + j + " " + eateryInfo[i][j]   + eateryInfo[i].toString());
                 }
             }
+            */
+
             db.insertEatery(eateryInfo[i][1], eateryInfo[i][2], Integer.parseInt(eateryInfo[i][3]), Integer.parseInt(eateryInfo[i][4]), Integer.parseInt(eateryInfo[i][5]), Integer.parseInt(eateryInfo[i][6]), eateryInfo[i][7]);
         }
 
-        db.viewEatery(1);
+        db.viewEatery(2);
     }
 }
