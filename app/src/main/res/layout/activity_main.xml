@@ -21,6 +21,7 @@
             android:layout_height="125dp"
             android:onClick="diningHall"
             android:text="Dining Hall"
+            android:textColor="@color/colorAccent"
             android:textSize="35sp" />
 
         <Button

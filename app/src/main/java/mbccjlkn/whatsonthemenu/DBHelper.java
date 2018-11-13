@@ -25,6 +25,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static int DATABASE_VERSION = 1;
 
     //food_table columns
+
     private static final String KEY_FOOD_ID = "id";
     private static final String KEY_FOOD_LOCATION = "location";
     private static final String KEY_FOOD_NAME = "name";
@@ -128,11 +129,11 @@ public class DBHelper extends SQLiteOpenHelper {
         return menu;
     }
 
-    public ArrayList<String> viewEatery(int row){
+    public String viewEatery(int row){
         db = getReadableDatabase();
-        String filters = "SELECT * FROM " + TABLE_FOOD + " WHERE " + KEY_EATERY_ID + " = " + row + ";";
+        String filters = "SELECT * FROM " + TABLE_EATERY + " WHERE " + KEY_EATERY_ID + " = " + row + ";";
         Cursor cr = db.rawQuery(filters,null);
-        /*
+
         StringBuilder sr = new StringBuilder();
         while(cr.moveToNext()){
             sr.append(cr.getString(0) + "|"
@@ -143,8 +144,8 @@ public class DBHelper extends SQLiteOpenHelper {
                     + cr.getString(5) + "|\n");
         }
         return sr.toString();
-        */
-        ArrayList<String> menu = new ArrayList<String>();
+
+        /*ArrayList<String> menu = new ArrayList<String>();
         while(cr.moveToNext()){
              menu.add(cr.getString(0) + "|"
                     + cr.getString(1) + "|"
@@ -156,7 +157,8 @@ public class DBHelper extends SQLiteOpenHelper {
                     + cr.getString(7) + "|");
         }
 
-        Toast.makeText(ctx, menu.toString(), Toast.LENGTH_LONG).show();
+        //Toast.makeText(ctx, menu.toString(), Toast.LENGTH_LONG).show();
         return menu;
+        */
     }
 }
