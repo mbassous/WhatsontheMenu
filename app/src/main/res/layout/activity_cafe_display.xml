@@ -12,6 +12,14 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/cafe_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Title"
+            android:textSize="40dp"
+            android:padding="3dip"/>
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20dp"
@@ -20,7 +28,8 @@
 
         <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dip">
 
             <TableRow
                 android:layout_width="match_parent"
@@ -32,7 +41,7 @@
 
                 <TextView
                     android:id="@+id/hour_details"
-                    android:text="MWF 9AM to 12PM, TuTh 11AM to 5PM"
+                    android:text="hours not set"
                     android:padding="3dip"/>
 
             </TableRow>

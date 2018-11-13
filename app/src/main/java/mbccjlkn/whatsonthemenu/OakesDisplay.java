@@ -1,13 +1,8 @@
 package mbccjlkn.whatsonthemenu;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class OakesDisplay extends AppCompatActivity {
 
@@ -23,8 +18,8 @@ public class OakesDisplay extends AppCompatActivity {
     }
 
     public void view(){
-        String test = db.viewEatery(1);
-        tv.setText(test);
+        //String test = db.viewEatery(12).get(1);
+        //tv.setText(test);
     }
 
 }

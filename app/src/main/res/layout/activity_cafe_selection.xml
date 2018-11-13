@@ -31,7 +31,8 @@
                 android:id="@+id/College8Cafe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="College 8 Cafe" />
+                android:text="College 8 Cafe"
+                android:onClick="cafe"/>
 
             <Button
                 android:id="@+id/CowellCoffeeShop"

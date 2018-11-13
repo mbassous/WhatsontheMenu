@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -25,7 +26,6 @@ public class DBHelper extends SQLiteOpenHelper {
     private static int DATABASE_VERSION = 1;
 
     //food_table columns
-
     private static final String KEY_FOOD_ID = "id";
     private static final String KEY_FOOD_LOCATION = "location";
     private static final String KEY_FOOD_NAME = "name";
@@ -51,20 +51,15 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + TABLE_FOOD + "(" + KEY_FOOD_ID + " integer primary key, "
-                + KEY_FOOD_LOCATION + " integer, "
-                + KEY_FOOD_NAME + " String, "
-                + KEY_FOOD_PRICE + " integer, "
-                + KEY_FOOD_CATEGORY + " String);");
 
-        db.execSQL("create table " + TABLE_EATERY + "(" + KEY_EATERY_ID + " integer primary key, "
-                + KEY_EATERY_NAME + " String, "
-                + KEY_EATERY_HOURS + " String, "
-                + KEY_EATERY_CARD + " integer, "
-                + KEY_EATERY_FLEXIS + " integer, "
-                + KEY_EATERY_MEALS + " integer, "
-                + KEY_EATERY_FAVORITE + " integer, "
-                + KEY_EATERY_PHONE + " String);");
+        //Initialize food item table
+        db.execSQL("create table " + TABLE_FOOD + "(" + KEY_FOOD_ID + " integer primary key, " + KEY_FOOD_LOCATION +
+                " integer, " + KEY_FOOD_NAME + " String, " + KEY_FOOD_PRICE + " String, " + KEY_FOOD_CATEGORY + " String);");
+
+        //Initialize eatery table
+        db.execSQL("create table " + TABLE_EATERY + "("+KEY_EATERY_ID+" integer primary key, "+ KEY_EATERY_NAME+
+                " String, "+KEY_EATERY_HOURS+" String, "+KEY_EATERY_CARD+" integer, "+KEY_EATERY_FLEXIS+
+                " integer, "+KEY_EATERY_MEALS+" integer, "+KEY_EATERY_FAVORITE+" integer, "+KEY_EATERY_PHONE+" String);");
 
         Toast.makeText(ctx, "Database created", Toast.LENGTH_LONG).show();
     }
@@ -80,7 +75,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
-    public long insertFood(int location, String food, int price, String category){
+    public long insertFood(int location, String food, String price, String category){
         db = getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(KEY_FOOD_LOCATION, location);
@@ -102,63 +97,44 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put(KEY_EATERY_FAVORITE, favorite);
         contentValues.put(KEY_EATERY_PHONE, phone);
         db.insert(TABLE_EATERY, null, contentValues);
+
     }
 
-    public ArrayList<String> viewFood(int place){
+    public ArrayList<ArrayList<String>> viewFood(int place){
         db = getReadableDatabase();
+        ArrayList<ArrayList<String>> menu = new ArrayList<ArrayList<String>>();
         String filters = "SELECT * FROM " + TABLE_FOOD + " WHERE " + KEY_FOOD_LOCATION + " = " + place + ";";
         Cursor cr = db.rawQuery(filters,null);
-        /*StringBuilder sr = new StringBuilder();
+
+        int i = 0; // Variable to count where we
         while(cr.moveToNext()){
-            sr.append(cr.getString(0) + "|"
-                    + cr.getString(1) + "|"
-                    + cr.getString(2) + "|"
-                    + cr.getString(3) + "|"
-                    + cr.getString(4) + "|\n");
+            ArrayList<String> tempString = new ArrayList<String>();
+            for(int j = 1; j < 5; j++) {
+                tempString.add(cr.getString(j));
+            }
+            menu.add(tempString);
+            i++;
         }
-        return sr.toString();
-        */
-        ArrayList<String> menu = new ArrayList<String>();
-        while(cr.moveToNext()){
-             menu.add(cr.getString(0) + "|"
-                    + cr.getString(1) + "|"
-                    + cr.getString(2) + "|"
-                    + cr.getString(3) + "|"
-                    + cr.getString(4) + "|");
-        }
+        Toast.makeText(ctx, menu.get(0).get(1), Toast.LENGTH_LONG).show();
         return menu;
     }
 
-    public String viewEatery(int row){
+    public ArrayList viewEatery(int row){
         db = getReadableDatabase();
-        String filters = "SELECT * FROM " + TABLE_EATERY + " WHERE " + KEY_EATERY_ID + " = " + row + ";";
+        ArrayList<String> rowData = new ArrayList<String>();
+        String filters = "select * from " + TABLE_EATERY + " where " + KEY_EATERY_ID + " = "+ row +";";
         Cursor cr = db.rawQuery(filters,null);
 
         StringBuilder sr = new StringBuilder();
-        while(cr.moveToNext()){
-            sr.append(cr.getString(0) + "|"
-                    + cr.getString(1) + "|"
-                    + cr.getString(2) + "|"
-                    + cr.getString(3) + "|"
-                    + cr.getString(4) + "|"
-                    + cr.getString(5) + "|\n");
-        }
-        return sr.toString();
 
-        /*ArrayList<String> menu = new ArrayList<String>();
-        while(cr.moveToNext()){
-             menu.add(cr.getString(0) + "|"
-                    + cr.getString(1) + "|"
-                    + cr.getString(2) + "|"
-                    + cr.getString(3) + "|"
-                    + cr.getString(4) + "|"
-                    + cr.getString(5) + "|"
-                    + cr.getString(6) + "|"
-                    + cr.getString(7) + "|");
+        cr.moveToNext();
+
+        for(int i = 1; i < 8; i++ ) {
+            rowData.add(cr.getString(i));
         }
 
-        //Toast.makeText(ctx, menu.toString(), Toast.LENGTH_LONG).show();
-        return menu;
-        */
+        Log.d("apples", sr.toString());
+        //Toast.makeText(ctx, rowData.get(0), Toast.LENGTH_LONG).show();
+        return rowData;
     }
 }
