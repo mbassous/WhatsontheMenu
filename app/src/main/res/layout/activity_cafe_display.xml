@@ -63,18 +63,18 @@
         </TableLayout>
 
         <TextView
+            android:id="@+id/menu_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="3dip"
             android:text="Menu"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:visibility="invisible"/>
 
-        <android.support.v7.widget.RecyclerView
+        <ListView
+            android:id="@+id/menu_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:layout_editor_absoluteY="54dp">
-
-        </android.support.v7.widget.RecyclerView>
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 

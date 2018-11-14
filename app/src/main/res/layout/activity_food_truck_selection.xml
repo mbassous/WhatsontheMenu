@@ -16,20 +16,23 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:text="Raymond's Catering"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            android:onClick="raymondsCatering"/>
 
         <Button
             android:id="@+id/CruzGourmetBTN"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:text="Cruz N Gourmet"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            android:onClick="cruzNGourmet"/>
 
         <Button
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:text="Kevins Mom"
-            android:textSize="30sp" />
+            android:text="Drunk Monkey"
+            android:textSize="30sp"
+            android:onClick="drunkMonkey"/>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

@@ -23,8 +23,8 @@
 
             <Button
                 android:id="@+id/Bowls"
-                android:layout_width="400dp"
-                android:layout_height="50sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:text="Bowls (Porter)" />
 
             <Button
@@ -32,7 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="College 8 Cafe"
-                android:onClick="cafe"/>
+                android:onClick="collegeEight"/>
 
             <Button
                 android:id="@+id/CowellCoffeeShop"
@@ -48,8 +48,8 @@
 
             <Button
                 android:id="@+id/McHenryCafe"
-                android:layout_width="400sp"
-                android:layout_height="50sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:text="Global Village Cafe (McHenry)" />
 
             <Button
@@ -68,8 +68,8 @@
                 android:id="@+id/OakesCafe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="oakes"
-                android:text="Oakes Cafe" />
+                android:text="Oakes Cafe"
+                android:onClick="oakesCafe"/>
 
             <Button
                 android:id="@+id/OwlsNest"
@@ -81,7 +81,6 @@
                 android:id="@+id/PerkCoffeeBaskin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="cafe"
                 android:text="Perk Coffee Bar (J Baskin)" />
 
             <Button

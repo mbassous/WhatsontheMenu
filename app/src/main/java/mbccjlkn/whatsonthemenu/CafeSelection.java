@@ -1,10 +1,9 @@
 package mbccjlkn.whatsonthemenu;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Spinner;
 
 public class CafeSelection extends AppCompatActivity {
 
@@ -15,13 +14,15 @@ public class CafeSelection extends AppCompatActivity {
         setContentView(R.layout.activity_cafe_selection);
     }
 
-    public void cafe(View view){
+    public void oakesCafe(View view){
         Intent I = new Intent(this, CafeDisplay.class);
+        I.putExtra("id", 5);
         startActivity(I);
     }
 
-    public void oakes(View view){
-        Intent I = new Intent(this, OakesDisplay.class);
+    public void collegeEight(View view){
+        Intent I = new Intent(this, CafeDisplay.class);
+        I.putExtra("id", 4);
         startActivity(I);
     }
 }

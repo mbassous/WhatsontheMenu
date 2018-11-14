@@ -100,26 +100,28 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
-    public ArrayList<ArrayList<String>> viewFood(int place){
+    public ArrayList<String> viewFood(int location){
         db = getReadableDatabase();
-        ArrayList<ArrayList<String>> menu = new ArrayList<ArrayList<String>>();
-        String filters = "SELECT * FROM " + TABLE_FOOD + " WHERE " + KEY_FOOD_LOCATION + " = " + place + ";";
-        Cursor cr = db.rawQuery(filters,null);
+        ArrayList<String> menu = new ArrayList<String>();
+        String filters = "SELECT * FROM " + TABLE_FOOD + " WHERE " + KEY_FOOD_LOCATION + " = " + location + ";";
+        Cursor cr = db.rawQuery(filters, null);
 
         int i = 0; // Variable to count where we
         while(cr.moveToNext()){
-            ArrayList<String> tempString = new ArrayList<String>();
-            for(int j = 1; j < 5; j++) {
-                tempString.add(cr.getString(j));
+            String tempString = "";
+            for(int j = 2; j < 4; j++) {
+                tempString += cr.getString(j);
+
+                if (j == 2) tempString += "\t\t";
             }
             menu.add(tempString);
             i++;
         }
-        Toast.makeText(ctx, menu.get(0).get(1), Toast.LENGTH_LONG).show();
+
         return menu;
     }
 
-    public ArrayList viewEatery(int row){
+    public ArrayList<String> viewEatery(int row){
         db = getReadableDatabase();
         ArrayList<String> rowData = new ArrayList<String>();
         String filters = "select * from " + TABLE_EATERY + " where " + KEY_EATERY_ID + " = "+ row +";";
