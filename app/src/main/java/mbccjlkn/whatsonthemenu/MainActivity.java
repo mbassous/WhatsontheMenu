@@ -14,8 +14,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         db = new DBHelper(this, "WOTM_DB",null, 1);
-        initializeEateryTable();
-        initializeFoodTable();
+        //initializeEateryTable();
+        //initializeFoodTable();
     }
 
     public void diningHall(View view){
