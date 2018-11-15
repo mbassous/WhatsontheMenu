@@ -6,46 +6,80 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <Button
+        android:id="@+id/CafeBTN"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:onClick="cafe"
+        android:text="Cafe/Restaurants"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/FoodTruckBTN"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/DHBTN" />
+
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:text="What's On The Menu?"
+        android:textAlignment="center"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <Button
+        android:id="@+id/DHBTN"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:onClick="diningHall"
+        android:text="Dining Hall"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/CafeBTN"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/FoodTruckBTN"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:onClick="foodTrucks"
+        android:text="Food Trucks"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/MapBTN"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CafeBTN" />
+
+    <Button
+        android:id="@+id/MapBTN"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:onClick="map"
+        android:text="Map"
+        android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/FoodTruckBTN" />
 
-        <Button
-            android:id="@+id/DHBTN"
-            android:layout_width="match_parent"
-            android:layout_height="125dp"
-            android:onClick="diningHall"
-            android:text="Dining Hall"
-            android:textColor="@color/colorAccent"
-            android:textSize="35sp" />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/DHBTN"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:srcCompat="@drawable/wotm_icon" />
 
-        <Button
-            android:id="@+id/CafeBTN"
-            android:layout_width="match_parent"
-            android:layout_height="125dp"
-            android:onClick="cafe"
-            android:text="Cafe/Restaurants"
-            android:textSize="35sp" />
-
-        <Button
-            android:id="@+id/FoodTruckBTN"
-            android:layout_width="match_parent"
-            android:layout_height="125dp"
-            android:onClick="foodTrucks"
-            android:text="Food Trucks"
-            android:textSize="35sp" />
-
-        <Button
-            android:id="@+id/MapBTN"
-            android:layout_width="match_parent"
-            android:layout_height="125dp"
-            android:text="Map"
-            android:onClick="map"
-            android:textSize="35sp" />
-    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

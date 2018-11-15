@@ -38,12 +38,14 @@
                 android:id="@+id/CowellCoffeeShop"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:onClick="cowellCafe"
                 android:text="Cowell Coffee Shop" />
 
             <Button
                 android:id="@+id/ExpressStore"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:onClick="expressStore"
                 android:text="Express Store" />
 
             <Button
@@ -62,6 +64,7 @@
                 android:id="@+id/KresgeCoop"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:onClick="kresgeCoop"
                 android:text="Kresge Co-op" />
 
             <Button

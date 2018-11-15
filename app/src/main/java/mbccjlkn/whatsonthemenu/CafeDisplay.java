@@ -35,6 +35,8 @@ public class CafeDisplay extends AppCompatActivity {
         if (list.get(3).equals("1")) result = result.concat("Flexis ");
         if (list.get(4).equals("1")) result = result.concat("Mealplan ");
 
+        if (result.isEmpty()) result = "Cash Only";
+
         TextView payment = findViewById(R.id.payment_details);
         payment.setText(result);
 

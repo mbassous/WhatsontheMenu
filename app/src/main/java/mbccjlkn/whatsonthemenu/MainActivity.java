@@ -14,7 +14,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         db = new DBHelper(this, "WOTM_DB",null, 1);
-        //initializeEateryTable();
+        initializeEateryTable();
+        initializeFoodTable();
     }
 
     public void diningHall(View view){
@@ -37,17 +38,30 @@ public class MainActivity extends AppCompatActivity {
         startActivity(I);
     }
 
+    // initializeEateryTable()
+    // pre: none
+    // post: adds specified eateries into TABLE_EATERY
     public void initializeEateryTable(){
         String[][] eateryInfo = new String[][] { {"1", "Cruz N'Gourmet", "Monday 11:45am - 2:00pm\nTuesday 11:45am - 2:00pm\nWednesday 11:45am - 2:00pm\nThursday 11:45am - 2:00pm\nFriday 11:45am - 2:00pm\nSaturday Closed\nSunday Closed", "0", "0", "0", "0", "(831) 251-2223"},
-                                                 {"2", "Drunk Monkey", "Switches Weekly\nM/W/F/ 11:30am - 2:00pm\nAnd Then\n T/TH 11:30am - 2:00pm", "0", "0", "0", "0", "(831) 818-9523"},
-                                                 {"3", "Raymonds Catering", "Monday Closed\nTuesday 12:00pm - 2:00pm\nWednesday 12:00pm - 2:00pm\nThursday 12:00pm - 2:00pm\nFriday12:00pm - 2:00pm\nSaturday Closed\nSunday Closed", "0", "0", "0", "0", "phone"},
-                                                 {"6", "College Eight Cafe", "Monday 8:00am - 8:00pm\nTuesday 8:00am - 8:00pm\nWednesday 8:00am - 8:00pm\nThursday 8:00am - 8:00pm\nFriday 8:00am - 8:00pm\nSaturday Closed\nSunday Closed", "1", "1", "1", "0", "(831) 459-4567"},
-                                                 {"12", "Oakes Cafe", "Monday 8:30am - 10:00pm\nTuesday 8:30am - 10:00pm\nWednesday 8:30am - 10:00pm\nThursday 8:30am - 10:00pm\nFriday 8:30am - 5:00pm\nSaturday Closed\nSunday Closed", "1", "1", "1", "0", "(831) 459-2640"} };
+                {"2", "Drunk Monkey", "Switches Weekly\nM/W/F/ 11:30am - 2:00pm\nAnd Then\n T/TH 11:30am - 2:00pm", "0", "0", "0", "0", "(831) 818-9523"},
+                {"3", "Raymonds Catering", "Monday Closed\nTuesday 12:00pm - 2:00pm\nWednesday 12:00pm - 2:00pm\nThursday 12:00pm - 2:00pm\nFriday12:00pm - 2:00pm\nSaturday Closed\nSunday Closed", "0", "0", "0", "0", "Phone Number: none"},
+                {"6", "College Eight Cafe", "Monday 8:00am - 8:00pm\nTuesday 8:00am - 8:00pm\nWednesday 8:00am - 8:00pm\nThursday 8:00am - 8:00pm\nFriday 8:00am - 8:00pm\nSaturday Closed\nSunday Closed", "1", "1", "1", "0", "(831) 459-4567"},
+                {"7", "Cowell College", "Monday 8:00am - 8:00pm\nTuesday 8:00am - 8:00pm\nWednesday 8:00am - 8:00pm\nThursday 8:00am - 8:00pm\nFriday 8:00am - 8:00pm\nSaturday 12:00pm - 5:00pm\nSunday 12:00pm - 5:00pm", "0", "0", "0", "0", "Phone Number: none"},
+                {"8", "Express Store", "Monday 7:30am - 6:30pm\nTuesday 7:30am - 6:30pm\nWednesday 7:30am - 6:30pm\nThursday 7:30am - 6:30pm\nFriday 7:30am - 6:30pm\nSaturday 10:00am - 4:00pm\nSunday Closed", "1", "1", "0", "0", "(831) 555-5555"},
+                {"11", "Kresge Co-op", "Monday 9:00am - 6:00pm\nTuesday 9:00am - 6:00pm\nWednesday 9:00am - 6:00pm\nThursday 9:00am - 6:00pm\nFriday 9:00am - 6:00pm\nSaturday Closed\nSunday Closed", "0", "0", "0", "0", "(831) 426-1506"},
+                {"12", "Oakes Cafe", "Monday 8:30am - 10:00pm\nTuesday 8:30am - 10:00pm\nWednesday 8:30am - 10:00pm\nThursday 8:30am - 10:00pm\nFriday 8:30am - 5:00pm\nSaturday Closed\nSunday Closed", "1", "1", "1", "0", "(831) 459-2640"} };
 
+        // insert eateries into TABLE_EATERY
+        for(int i = 0; i < eateryInfo.length; i++){
+            db.insertEatery(eateryInfo[i][1], eateryInfo[i][2], Integer.parseInt(eateryInfo[i][3]), Integer.parseInt(eateryInfo[i][4]), Integer.parseInt(eateryInfo[i][5]), Integer.parseInt(eateryInfo[i][6]), eateryInfo[i][7]);
+        }
+    }
+
+    // initializeFoodTable()
+    // pre: none
+    // post: adds specified menu items into TABLE_FOOD
+    public void initializeFoodTable(){
         String[][] foodInfo = new String[][]  {
-
-                // Sample Template
-                // {"",""," ","$", ""},
                 //Cruz N Gourmet
                 {"1", "1", "Soft Drinks", "$1.00", ""},
                 {"2", "1", "Sparkling Water", "$1.00", ""},
@@ -181,112 +195,90 @@ public class MainActivity extends AppCompatActivity {
 
 
                 //Oakes Cafe
-                {"122","5","Classic Grilled Chicken Sandwich","$6.95", ""},
-                {"123","5","Bacon Ranch Chicken Sandwich","$7.25", ""},
-                {"124","5","Pesto Chicken Sandwich","$7.25", ""},
-                {"125","5","Chipotle Bacon Chicken Sandwich", "$7.75", ""},
-                {"126","5","Chicken Tender Sandwich", "$5.25", ""},
-                {"127","5","Oakes Club Sub", "$6.49", ""},
-                {"128","5","Bacon Lettuce and Tomato", "$4.75", ""},
-                {"129","5","Grilled Cheese", "$4.25", ""},
-                {"130","5","Grilled Bacon and Cheese", "$7.75", ""},
-                {"131","5","Rice Bowl with Choice of Protein", "$6.75", ""},
-                {"132","5","Bagel", "$1.65", ""},
-                {"133","5","Bear Claw", "$2.50", ""},
-                {"134","5","Brownie", "$7.75", ""},
-                {"135","5","1 Cookie", "$1.95", ""},
-                {"136","5","2 Cookies", "$2.95", ""},
-                {"137","5","Plain Croissant", "$2.75", ""},
-                {"138","5","Danish", "$7.75", ""},
-                {"139","5","Donut", "$7.75", ""},
-                {"140","5","Muffin", "$7.75", ""},
-                {"141","5","Vegan Rasp Bar", "$2.25", ""},
-                {"142","5","Scone", "$2.95", ""},
-                {"143","5","Turnover", "$2.45", ""},
-                {"144","5","The Classic Burger", "$6.00", ""},
-                {"145","5","Cheese Burger", "$6.75", ""},
-                {"146","5","Bacon Cheese Burger", "$7.25", ""},
-                {"147","5","Double Cheese Burger", "$8.25", ""},
-                {"148","5","Guacamole Burger", "$7.25", ""},
-                {"149","5","Chicken Tenders", "$4.75", ""},
-                {"150","5","French Fries", "$2.95", ""},
-                {"151","5","Onion Rings", "$3.50", ""},
-                {"152","5","Mozzarella Sticks", "$4.75", ""},
-                {"153","5","Side Salad", "$2.25", ""},
-                {"154","5","Garden Salad", "$5.25", ""},
-                {"155","5","Garden Salad with Chicken", "$7.25", ""},
-                {"156","5","Garden Salad with Tofu", "$7.25", ""},
-                {"157","5","Caesar Salad", "$5.25", ""},
-                {"158","5","Caesar Salad with Chicken", "$7.25", ""},
-                {"159","5","Bagel Sandwich", "$5.25", ""},
-                {"160","5","Natural Bridges", "$5.75", ""},
+                {"122","8","Classic Grilled Chicken Sandwich","$6.95", ""},
+                {"123","8","Bacon Ranch Chicken Sandwich","$7.25", ""},
+                {"124","8","Pesto Chicken Sandwich","$7.25", ""},
+                {"125","8","Chipotle Bacon Chicken Sandwich", "$7.75", ""},
+                {"126","8","Chicken Tender Sandwich", "$5.25", ""},
+                {"127","8","Oakes Club Sub", "$6.49", ""},
+                {"128","8","Bacon Lettuce and Tomato", "$4.75", ""},
+                {"129","8","Grilled Cheese", "$4.25", ""},
+                {"130","8","Grilled Bacon and Cheese", "$7.75", ""},
+                {"131","8","Rice Bowl with Choice of Protein", "$6.75", ""},
+                {"132","8","Bagel", "$1.65", ""},
+                {"133","8","Bear Claw", "$2.50", ""},
+                {"134","8","Brownie", "$7.75", ""},
+                {"135","8","1 Cookie", "$1.95", ""},
+                {"136","8","2 Cookies", "$2.95", ""},
+                {"137","8","Plain Croissant", "$2.75", ""},
+                {"138","8","Danish", "$7.75", ""},
+                {"139","8","Donut", "$7.75", ""},
+                {"140","8","Muffin", "$7.75", ""},
+                {"141","8","Vegan Rasp Bar", "$2.25", ""},
+                {"142","8","Scone", "$2.95", ""},
+                {"143","8","Turnover", "$2.45", ""},
+                {"144","8","The Classic Burger", "$6.00", ""},
+                {"145","8","Cheese Burger", "$6.75", ""},
+                {"146","8","Bacon Cheese Burger", "$7.25", ""},
+                {"147","8","Double Cheese Burger", "$8.25", ""},
+                {"148","8","Guacamole Burger", "$7.25", ""},
+                {"149","8","Chicken Tenders", "$4.75", ""},
+                {"150","8","French Fries", "$2.95", ""},
+                {"151","8","Onion Rings", "$3.50", ""},
+                {"152","8","Mozzarella Sticks", "$4.75", ""},
+                {"153","8","Side Salad", "$2.25", ""},
+                {"154","8","Garden Salad", "$5.25", ""},
+                {"155","8","Garden Salad with Chicken", "$7.25", ""},
+                {"156","8","Garden Salad with Tofu", "$7.25", ""},
+                {"157","8","Caesar Salad", "$5.25", ""},
+                {"158","8","Caesar Salad with Chicken", "$7.25", ""},
+                {"159","8","Bagel Sandwich", "$5.25", ""},
+                {"160","8","Natural Bridges", "$5.75", ""},
                 //Add other version after ^^^
-                {"161","5","Mavericks Scramble", "$7.75", ""},
-                {"162","5","Manresa Breakfast Burrito", "$6.50", ""},
-                {"163","5","French Toast Sticks", "$3.60", ""},
-                {"164","5","Cheese Quesadilla", "$4.25", ""},
-                {"165","5","Veggie Quesadilla", "$5.25", ""},
-                {"166","5","Chicken Quesadilla", "$6.25", ""},
-                {"167","5","Hummus Avocado Wrap", "$6.25", ""},
-                {"168","5","Sundried Tomato Chicken Wrap", "$6.25", ""},
-                {"169","5","Candy", "$1.39", ""},
-                {"170","5","Cliff Bar", "$2.69", ""},
+                {"161","8","Mavericks Scramble", "$7.75", ""},
+                {"162","8","Manresa Breakfast Burrito", "$6.50", ""},
+                {"163","8","French Toast Sticks", "$3.60", ""},
+                {"164","8","Cheese Quesadilla", "$4.25", ""},
+                {"165","8","Veggie Quesadilla", "$5.25", ""},
+                {"166","8","Chicken Quesadilla", "$6.25", ""},
+                {"167","8","Hummus Avocado Wrap", "$6.25", ""},
+                {"168","8","Sundried Tomato Chicken Wrap", "$6.25", ""},
+                {"169","8","Candy", "$1.39", ""},
+                {"170","8","Cliff Bar", "$2.69", ""},
                 //Drinks
-                {"171","5","Organic Espresso", "$2.85", ""},
-                {"172","5","Americano", "$3.05", ""},
-                {"173","5","Cappuccino", "$4.10", ""},
-                {"174","5","Latte", "$4.10", ""},
-                {"175","5","Vanilla Latte", "$4.75", ""},
-                {"176","5","Caramel Latte", "$4.60", ""},
-                {"177","5","Matcha Latte", "$4.25", ""},
-                {"178","5","Mocha", "$4.85", ""},
-                {"179","5","Iced Coffee", "$3.00", ""},
-                {"180","5","Fountain Drink", "$1.85", ""},
-                {"181","5","Italian Soda", "$2.05", ""},
-                {"182","5","Fruit Smoothies", "$4.95", ""},
-                {"183","5","Fruit and Cream Smoothies", "$4.95", ""},
-                {"184","5","Frappe Latte", "$4.95", ""},
-                {"185","5","Acai Bowl", "$7.25", ""},
-                {"186","5","Coconut Water", "$3.99", ""},
-                {"187","5","Gatorade", "$1.79", ""},
-                {"188","5","Yerba Mate", "$3.59", ""},
-                {"189","5","Lipton", "$1.69", ""},
-                {"190","5","Nestle Kwik", "$2.69", ""},
-                {"191","5","Ocean Spray", "$1.89", ""},
-                {"192","5","Pure Leaf", "$2.99", ""},
-                {"193","5","Rockstar", "$3.29", ""},
-                {"194","5","Soy Milk", "$1.79", ""},
-                {"195","5","Starbucks", "$1.79", ""},
-                {"196","5","Yogurts", "$2.21", ""},
-                {"197","5","Naked Juice", "$3.99", ""},
-                {"198","5","Forager Vegan Yogurt", "$2.75", ""},
-                {"199","5","Double Shot Protein", "$4.29", ""},
-                {"200","5","Starbucks Frappe", "$4.29", ""},
-                {"201","5","Refresher", "$3.29", ""},
-        };
+                {"171","8","Organic Espresso", "$2.85", ""},
+                {"172","8","Americano", "$3.05", ""},
+                {"173","8","Cappuccino", "$4.10", ""},
+                {"174","8","Latte", "$4.10", ""},
+                {"175","8","Vanilla Latte", "$4.75", ""},
+                {"176","8","Caramel Latte", "$4.60", ""},
+                {"177","8","Matcha Latte", "$4.25", ""},
+                {"178","8","Mocha", "$4.85", ""},
+                {"179","8","Iced Coffee", "$3.00", ""},
+                {"180","8","Fountain Drink", "$1.85", ""},
+                {"181","8","Italian Soda", "$2.05", ""},
+                {"182","8","Fruit Smoothies", "$4.95", ""},
+                {"183","8","Fruit and Cream Smoothies", "$4.95", ""},
+                {"184","8","Frappe Latte", "$4.95", ""},
+                {"185","8","Acai Bowl", "$7.25", ""},
+                {"186","8","Coconut Water", "$3.99", ""},
+                {"187","8","Gatorade", "$1.79", ""},
+                {"188","8","Yerba Mate", "$3.59", ""},
+                {"189","8","Lipton", "$1.69", ""},
+                {"190","8","Nestle Kwik", "$2.69", ""},
+                {"191","8","Ocean Spray", "$1.89", ""},
+                {"192","8","Pure Leaf", "$2.99", ""},
+                {"193","8","Rockstar", "$3.29", ""},
+                {"194","8","Soy Milk", "$1.79", ""},
+                {"195","8","Starbucks", "$1.79", ""},
+                {"196","8","Yogurts", "$2.21", ""},
+                {"197","8","Naked Juice", "$3.99", ""},
+                {"198","8","Forager Vegan Yogurt", "$2.75", ""},
+                {"199","8","Double Shot Protein", "$4.29", ""},
+                {"200","8","Starbucks Frappe", "$4.29", ""},
+                {"201","8","Refresher", "$3.29", ""} };
 
-
-        //Log.d("bananas", "initializeEateryTable:" + eateryInfo[0].length);
-        //Log.d("bananas", "initializeEateryTable:" + eateryInfo[1].length);
-        //Log.d("bananas", "initializeEateryTable:" + eateryInfo[2].length);
-        //Log.d("bananas", "initializeEateryTable:" + eateryInfo[3].length);
-        //Log.d("bananas", "initializeEateryTable:" + eateryInfo[4].length);
-        //Log.d("bananas", "initializeEateryTable:" + eateryInfo[5].length);
-        for(int i = 0; i < eateryInfo.length; i++){
-
-            /*Log.d("bananas", "initializeEateryTable: Table Contents "/*+ eateryInfo[i].toString());
-            if (i != 0) {
-                Log.d("bananas", "initializeEateryTable: Table Contents "/*+ eateryInfo[i].toString());
-                for (int j = 0; j < 8; j++) {
-                    Log.d("bananas", "initializeEateryTable: " + j + " " + eateryInfo[i][j]   + eateryInfo[i].toString());
-                }
-            }
-            */
-
-            db.insertEatery(eateryInfo[i][1], eateryInfo[i][2], Integer.parseInt(eateryInfo[i][3]), Integer.parseInt(eateryInfo[i][4]), Integer.parseInt(eateryInfo[i][5]), Integer.parseInt(eateryInfo[i][6]), eateryInfo[i][7]);
-        }
-
-        //insert food items
+        // insert food items into TABLE_FOOD
         for(int i = 0; i < foodInfo.length; i++){
             db.insertFood(Integer.parseInt(foodInfo[i][1]), foodInfo[i][2], foodInfo[i][3], foodInfo[i][4]);
         }
