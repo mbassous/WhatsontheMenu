@@ -29,7 +29,8 @@
             android:label="@string/title_activity_food_truck_display"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".CafeDisplay" />
-        <activity android:name=".OakesDisplay"></activity>
+        <activity android:name=".OakesDisplay" />
+        <activity android:name=".DiningHallDisplay"></activity>
     </application>
 
 </manifest>

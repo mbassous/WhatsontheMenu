@@ -6,58 +6,109 @@
     android:layout_height="match_parent"
     tools:context=".DiningHallSelection">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="48dp"
+        android:text="Select a Dining Hall"
+        android:textColor="@color/colorPrimary"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/CowellStevensonDH"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/CowellStevensonDH"
+        style="@style/wotmButton"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/rounded_button"
+        android:onClick="cowell"
+        android:padding="10dp"
+        android:tag="CowellStevensonDH"
+        android:text="Cowell/Stevenson"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/RachelCarsonOakesDH"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <Button
+        android:id="@+id/PorterKresgeDH"
+        style="@style/wotmButton"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/rounded_button"
+        android:onClick="porter"
+        android:padding="10dp"
+        android:tag="PorterKresgeDH"
+        android:text="Porter/Kresge"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/CrownMerrillDH"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/College910DH" />
+
+    <Button
+        android:id="@+id/RachelCarsonOakesDH"
+        style="@style/wotmButton"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/rounded_button"
+        android:onClick="rachelCarson"
+        android:padding="10dp"
+        android:tag="RachelCarsonOakesDH"
+        android:text="Rachel Carson/Oakes"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/College910DH"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CowellStevensonDH" />
+
+    <Button
+        android:id="@+id/College910DH"
+        style="@style/wotmButton"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/rounded_button"
+        android:onClick="collegeTen"
+        android:padding="10dp"
+        android:tag="College910DH"
+        android:text="College 9/10"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/PorterKresgeDH"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/RachelCarsonOakesDH" />
+
+    <Button
+        android:id="@+id/CrownMerrillDH"
+        style="@style/wotmButton"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/rounded_button"
+        android:onClick="crown"
+        android:padding="10dp"
+        android:tag="CrownMerrillDH"
+        android:text="Crown/Merrill"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/PorterKresgeDH" />
 
-        <Button
-            android:id="@+id/CowellStevensonDH"
-            android:tag= "CowellStevensonDH"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:text="Cowell/Stevenson"
-            android:onClick="startDHActivity"
-            android:textSize="25sp" />
-
-        <Button
-            android:id="@+id/RachelCarsonOakesDH"
-            android:tag= "RachelCarsonOakesDH"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:onClick="startDHActivity"
-            android:text="Rachel Carson/Oakes"
-            android:textSize="25sp" />
-
-        <Button
-            android:id="@+id/College910DH"
-            android:tag= "College910DH"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:onClick="startDHActivity"
-            android:text="College 9/10"
-            android:textSize="25sp" />
-
-        <Button
-            android:id="@+id/PorterKresgeDH"
-            android:tag= "PorterKresgeDH"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:text="Porter/Kresge"
-            android:onClick="startDHActivity"
-            android:textSize="25sp" />
-
-        <Button
-            android:id="@+id/CrownMerrillDH"
-            android:tag= "CrownMerrillDH"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:text="Crown/Merrill"
-            android:onClick="startDHActivity"
-            android:textSize="25sp" />
-    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

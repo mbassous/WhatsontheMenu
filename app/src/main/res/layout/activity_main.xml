@@ -34,11 +34,11 @@
             android:layout_width="300dp"
             android:layout_height="60dp"
             android:background="@drawable/rounded_button"
-            android:onClick="diningHall"
-            android:text="Dining Hall"
             android:layout_gravity="center_horizontal"
             android:padding="10dp"
-            style="@style/wotmButton"/>
+            style="@style/wotmButton"
+            android:onClick="diningHall"
+            android:text="Dining Hall"/>
 
         <Space
             android:layout_width="match_parent"
