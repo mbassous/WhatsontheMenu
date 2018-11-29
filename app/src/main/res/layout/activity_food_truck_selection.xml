@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FoodTruckSelection">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/RaymondCateringBTN"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="Raymond's Catering"
+            android:textSize="30sp"
+            android:onClick="raymondsCatering"/>
+
+        <Button
+            android:id="@+id/CruzGourmetBTN"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="Cruz N Gourmet"
+            android:textSize="30sp"
+            android:onClick="cruzNGourmet"/>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="Drunk Monkey"
+            android:textSize="30sp"
+            android:onClick="drunkMonkey"/>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

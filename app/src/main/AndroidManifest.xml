@@ -16,6 +16,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".DiningHallSelection" />
+        <activity android:name=".CafeSelection" />
+        <activity android:name=".FoodTruckSelection" />
+        <activity android:name=".Map" />
+        <activity
+            android:name=".DHDisplay"
+            android:label="@string/title_activity_dhdisplay"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".FoodTruckDisplay"
+            android:label="@string/title_activity_food_truck_display"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".CafeDisplay" />
     </application>
 
 </manifest>

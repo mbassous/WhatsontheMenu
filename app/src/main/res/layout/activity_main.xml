@@ -4,51 +4,88 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="#fffff0">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="123dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:text="Button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="147dp"
-        android:layout_marginLeft="147dp"
-        android:layout_marginEnd="149dp"
-        android:layout_marginRight="149dp"
-        android:layout_marginBottom="160dp"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="What's On The Menu?"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:padding="10dp"/>
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="44dp"
-        android:text="Button"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            app:srcCompat="@drawable/wotm_icon"
+            android:paddingBottom="20dp"/>
+
+        <Button
+            android:id="@+id/DHBTN"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:background="@drawable/rounded_button"
+            android:onClick="diningHall"
+            android:text="Dining Hall"
+            android:layout_gravity="center_horizontal"
+            android:padding="10dp"
+            style="@style/wotmButton"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <Button
+            android:id="@+id/CafeBTN"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:background="@drawable/rounded_button"
+            android:onClick="cafe"
+            android:text="Cafe/Restaurants"
+            android:layout_gravity="center_horizontal"
+            android:padding="10dp"
+            style="@style/wotmButton"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <Button
+            android:id="@+id/FoodTruckBTN"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:background="@drawable/rounded_button"
+            android:onClick="foodTrucks"
+            android:text="Food Trucks"
+            android:layout_gravity="center_horizontal"
+            android:padding="10dp"
+            style="@style/wotmButton"/>
+
+        <!--
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <Button
+            android:id="@+id/MapBTN"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:background="@drawable/rounded_button"
+            android:onClick="map"
+            android:text="Map"
+            android:layout_gravity="center_horizontal"
+            android:padding="10dp"
+            style="@style/wotmButton"/>
+            -->
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
