@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:text="What's On The Menu?"
             android:textAlignment="center"
-            android:textSize="30sp"
+            android:textSize="35sp"
             android:padding="10dp"/>
 
         <ImageView
@@ -34,11 +34,11 @@
             android:layout_width="300dp"
             android:layout_height="60dp"
             android:background="@drawable/rounded_button"
-            android:onClick="diningHall"
-            android:text="Dining Hall"
             android:layout_gravity="center_horizontal"
             android:padding="10dp"
-            style="@style/wotmButton"/>
+            style="@style/wotmButton"
+            android:onClick="diningHall"
+            android:text="Dining Hall"/>
 
         <Space
             android:layout_width="match_parent"
@@ -70,7 +70,6 @@
             android:padding="10dp"
             style="@style/wotmButton"/>
 
-        <!--
         <Space
             android:layout_width="match_parent"
             android:layout_height="20dp" />
@@ -85,7 +84,6 @@
             android:layout_gravity="center_horizontal"
             android:padding="10dp"
             style="@style/wotmButton"/>
-            -->
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

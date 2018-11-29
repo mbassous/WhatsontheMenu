@@ -13,12 +13,6 @@ public class FoodTruckSelection extends AppCompatActivity {
         setContentView(R.layout.activity_food_truck_selection);
     }
 
-    public void raymondsCatering(View view){
-        Intent I = new Intent(this, CafeDisplay.class);
-        I.putExtra("id", 3);
-        startActivity(I);
-    }
-
     public void cruzNGourmet(View view){
         Intent I = new Intent(this, CafeDisplay.class);
         I.putExtra("id", 1);
@@ -30,4 +24,11 @@ public class FoodTruckSelection extends AppCompatActivity {
         I.putExtra("id", 2);
         startActivity(I);
     }
+
+    public void raymondsCatering(View view){
+        Intent I = new Intent(this, CafeDisplay.class);
+        I.putExtra("id", 3);
+        startActivity(I);
+    }
+
 }
