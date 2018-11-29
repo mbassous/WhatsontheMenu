@@ -1,3 +1,27 @@
 <resources>
     <string name="app_name">What\'s on the Menu</string>
+    <string name="title_activity_dhdisplay">DHDisplay</string>
+    <string name="Dining_Hall_Information">
+        Hours of Operation:\n\n
+
+        Location: X College\n\n
+
+        Description:\n\n
+
+        Reviews:\n
+
+    </string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_cafe_display">CafeDisplay</string>
+    <string name="large_text">
+        Hours of Operation:\n\n
+
+        Location: X College\n\n
+
+        Description:\n\n
+
+        Reviews:\n
+
+    </string>
+    <string name="title_activity_food_truck_display">FoodTruckDisplay</string>
 </resources>
