@@ -4,40 +4,89 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="#fffff0">
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="What's On The Menu?"
+            android:textAlignment="center"
+            android:textSize="35sp"
+            android:padding="10dp"/>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            app:srcCompat="@drawable/wotm_icon"
+            android:paddingBottom="20dp"/>
 
         <Button
             android:id="@+id/DHBTN"
-            android:layout_width="match_parent"
-            android:layout_height="125dp"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:background="@drawable/rounded_button"
+            android:layout_gravity="center_horizontal"
+            android:padding="10dp"
+            style="@style/wotmButton"
             android:onClick="diningHall"
-            android:text="Dining Hall"
-            android:textSize="35sp" />
+            android:text="Dining Hall"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
 
         <Button
             android:id="@+id/CafeBTN"
-            android:layout_width="match_parent"
-            android:layout_height="125dp"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:background="@drawable/rounded_button"
             android:onClick="cafe"
             android:text="Cafe/Restaurants"
-            android:textSize="35sp" />
+            android:layout_gravity="center_horizontal"
+            android:padding="10dp"
+            style="@style/wotmButton"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
 
         <Button
             android:id="@+id/FoodTruckBTN"
-            android:layout_width="match_parent"
-            android:layout_height="125dp"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:background="@drawable/rounded_button"
             android:onClick="foodTrucks"
             android:text="Food Trucks"
-            android:textSize="35sp" />
+            android:layout_gravity="center_horizontal"
+            android:padding="10dp"
+            style="@style/wotmButton"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <Button
+            android:id="@+id/MapBTN"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:background="@drawable/rounded_button"
+            android:onClick="map"
+            android:text="Map"
+            android:layout_gravity="center_horizontal"
+            android:padding="10dp"
+            style="@style/wotmButton"/>
+    </LinearLayout>
+
 
         <Button
             android:id="@+id/MapBTN"
