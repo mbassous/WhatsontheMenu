@@ -41,8 +41,4 @@ public class MainActivity extends AppCompatActivity {
         startActivity(I);
     }
 
-
-    // initializeEateryTable()
-    // pre: none
-    // post: adds specified eateries into TABLE_EATERY
 }

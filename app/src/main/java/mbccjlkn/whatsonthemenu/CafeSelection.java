@@ -1,9 +1,11 @@
 package mbccjlkn.whatsonthemenu;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+
 
 public class CafeSelection extends AppCompatActivity {
 
@@ -12,7 +14,7 @@ public class CafeSelection extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cafe_selection);
     }
-
+  
     public void bananaJoes(View view){
         Intent I = new Intent(this, CafeDisplay.class);
         I.putExtra("id", 4);
@@ -116,3 +118,4 @@ public class CafeSelection extends AppCompatActivity {
     }
 
 }
+
