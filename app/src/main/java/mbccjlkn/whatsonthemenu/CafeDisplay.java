@@ -41,9 +41,11 @@ public class CafeDisplay extends AppCompatActivity {
 
             @Override
             public void onGroupExpand(int groupPosition) {
-                Toast.makeText(getApplicationContext(),
+
+
+                /*Toast.makeText(getApplicationContext(),
                         expandableListTitle.get(groupPosition) + " List Expanded.",
-                        Toast.LENGTH_SHORT).show();
+                        Toast.LENGTH_SHORT).show();*/
             }
         });
 
@@ -51,9 +53,9 @@ public class CafeDisplay extends AppCompatActivity {
 
             @Override
             public void onGroupCollapse(int groupPosition) {
-                Toast.makeText(getApplicationContext(),
+                /*Toast.makeText(getApplicationContext(),
                         expandableListTitle.get(groupPosition) + " List Collapsed.",
-                        Toast.LENGTH_SHORT).show();
+                        Toast.LENGTH_SHORT).show();*/
 
             }
         });
@@ -62,14 +64,17 @@ public class CafeDisplay extends AppCompatActivity {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v,
                                         int groupPosition, int childPosition, long id) {
-                Toast.makeText(
+
+                // Here is where we would have detailed info about food items show up
+
+                /*Toast.makeText(
                         getApplicationContext(),
                         expandableListTitle.get(groupPosition)
                                 + " -> "
                                 + expandableListDetail.get(
                                 expandableListTitle.get(groupPosition)).get(
                                 childPosition), Toast.LENGTH_SHORT
-                ).show();
+                ).show();*/
                 return false;
             }
         });
@@ -98,7 +103,10 @@ public class CafeDisplay extends AppCompatActivity {
 
         /////////////////////////////////////////////////
 
-        ArrayList<String> foodlist = db.viewFood(extras.getInt("id"));
+        findViewById(R.id.menu_header).setVisibility(View.VISIBLE);
+
+        /*
+        ArrayList<String> foodlist = db.viewFood(extras.getInt("id"), "ass");
 
         //show menu header if menu exists
         if (foodlist.size() > 0) {
@@ -113,6 +121,8 @@ public class CafeDisplay extends AppCompatActivity {
         //ListView menu = (ListView) findViewById(R.id.menu_list);
         //menu.setAdapter(adapter);
 
+
+        */
 
     }
 }
