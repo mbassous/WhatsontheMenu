@@ -285,15 +285,15 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/rounded_button"
+                android:onClick="perk1"
                 android:padding="10dp"
-                android:text="Perk Coffee Bar (J Baskin)"
+                android:text="Perk Coffee (J Baskin)"
                 android:textSize="17sp"
                 app:layout_constraintBottom_toTopOf="@+id/PerkCoffeeEAM"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/OwlsNest"
-                android:onClick="perk1"/>
+                app:layout_constraintTop_toBottomOf="@+id/OwlsNest" />
 
             <Button
                 android:id="@+id/TerraFresca"

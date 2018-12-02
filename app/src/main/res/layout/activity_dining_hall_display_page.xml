@@ -13,7 +13,7 @@
         android:orientation="vertical">>
 
         <TextView
-            android:id="@+id/cafe_title"
+            android:id="@+id/DH_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="3dip"
@@ -62,6 +62,17 @@
             android:padding="3dip"
             android:text="Description"
             android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/menuBTN"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/rounded_button"
+            android:onClick="menu"
+            android:text="Menu" />
 
     </LinearLayout>
 

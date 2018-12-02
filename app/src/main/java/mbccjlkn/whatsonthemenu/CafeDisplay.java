@@ -20,7 +20,6 @@ public class CafeDisplay extends AppCompatActivity {
 
         //db = new DBAccess(this);
 
-
         Bundle extras = getIntent().getExtras();
         ArrayList<String> list = db.viewEatery(extras.getInt("id"));
 
