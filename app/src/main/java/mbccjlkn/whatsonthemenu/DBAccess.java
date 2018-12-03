@@ -13,21 +13,12 @@ public class DBAccess {
     private SQLiteDatabase database;
     private static DBAccess instance;
 
-    /**
-     * Private constructor to aboid object creation from outside classes.
-     *
-     * @param context
-     */
+
     private DBAccess(Context context) {
         this.openHelper = new DBHelper2(context);
     }
 
-    /**
-     * Return a singleton instance of DatabaseAccess.
-     *
-     * @param context the Context
-     * @return the instance of DabaseAccess
-     */
+
     public static DBAccess getInstance(Context context) {
         if (instance == null) {
             instance = new DBAccess(context);
@@ -35,31 +26,24 @@ public class DBAccess {
         return instance;
     }
 
-    /**
-     * Open the database connection.
-     */
+
     public void open() {
         this.database = openHelper.getWritableDatabase();
     }
 
-    /**
-     * Close the database connection.
-     */
+
     public void close() {
         if (database != null) {
             this.database.close();
         }
     }
 
-    /**
-     * Read all quotes from the database.
-     *
-     * @return a List of quotes
-     */
-    public ArrayList<String> viewFood(int location) {
+
+    public ArrayList<String> viewFood(int location, String cat) {
 
         ArrayList<String> menu = new ArrayList<String>();
-        String filters = "SELECT * FROM Foods WHERE eateryID = " + location + ";";
+        String filters = "SELECT * FROM Foods WHERE eateryID = " + location + " AND category = '" + cat + "';";
+
         Cursor cr = database.rawQuery(filters, null);
 
         int i = 0; // Variable to count where we
@@ -75,6 +59,18 @@ public class DBAccess {
         }
 
         return menu;
+    }
+
+    public ArrayList<String> getCategories(int location){
+        ArrayList<String> cats = new ArrayList<String>();
+        String filters = "SELECT DISTINCT category FROM Foods WHERE eateryID = "+location+";";
+        Cursor cr = database.rawQuery(filters, null);
+
+        while(cr.moveToNext()) {
+            cats.add(cr.getString(0));
+        }
+
+        return cats;
     }
 
     public ArrayList<String> viewEatery(int row) {

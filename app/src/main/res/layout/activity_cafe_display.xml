@@ -70,11 +70,28 @@
             android:text="Menu"
             android:textSize="20dp"
             android:visibility="invisible"/>
+        
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".CafeDisplay">
 
-        <ListView
+            <ExpandableListView
+                android:id="@+id/expandableListView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft"
+                android:divider="@android:color/darker_gray"
+                android:dividerHeight="0.5dp">
+
+            </ExpandableListView>
+
+        </RelativeLayout>
+
+        <!--<ListView
             android:id="@+id/menu_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent" />-->
 
     </LinearLayout>
 
