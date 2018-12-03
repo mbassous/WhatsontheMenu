@@ -39,19 +39,13 @@ public class DiningHallDisplayPage extends AppCompatActivity {
 
         TextView payment = findViewById(R.id.payment_details);
         payment.setText(result);
-        showMenu();
     }
-
 
     public void menu(View view){
-       // loadFragment(new FirstFragment());
-    }
-
-    public void showMenu(){
-
-        String diningHallURL = "https://nutrition.sa.ucsc.edu/nutframe.asp?locationNum=40&locationName=Colleges+Nine+%26+Ten+Dining+Hall";
+        Bundle extras = getIntent().getExtras();
+        String url = db.getURL(extras.getInt("id"));
         Intent I = new Intent(Intent.ACTION_VIEW);
-        I.setData(Uri.parse(diningHallURL));
+        I.setData(Uri.parse(url));
         startActivity(I);
     }
 
