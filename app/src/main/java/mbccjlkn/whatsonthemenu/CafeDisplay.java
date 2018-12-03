@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -116,6 +115,7 @@ public class CafeDisplay extends AppCompatActivity {
 
 
         */
-        Toast.makeText(this, db.getLocation(extras.getInt("id")), Toast.LENGTH_SHORT).show();
+        TextView loc = findViewById(R.id.location);
+        loc.setText(db.getLocation(extras.getInt("id")));
     }
 }

@@ -39,6 +39,10 @@ public class DiningHallDisplayPage extends AppCompatActivity {
 
         TextView payment = findViewById(R.id.payment_details);
         payment.setText(result);
+
+        TextView loc = findViewById(R.id.location);
+        loc.setText(db.getLocation(extras.getInt("id")));
+
     }
 
     public void menu(View view){

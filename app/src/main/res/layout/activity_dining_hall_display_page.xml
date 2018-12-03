@@ -46,7 +46,7 @@
 
                 <TextView
                     android:padding="3dip"
-                    android:text="Location: " />
+                    android:text="location: " />
 
                 <TextView
                     android:id="@+id/location"
