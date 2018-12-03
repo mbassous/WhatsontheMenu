@@ -3,10 +3,8 @@ package mbccjlkn.whatsonthemenu;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -79,9 +77,6 @@ public class CafeDisplay extends AppCompatActivity {
             }
         });
 
-        //db = new DBAccess(this);
-
-
         TextView title = findViewById(R.id.cafe_title);
         title.setText(list.get(0));
 
@@ -121,6 +116,6 @@ public class CafeDisplay extends AppCompatActivity {
 
 
         */
-
+        Toast.makeText(this, db.getLocation(extras.getInt("id")), Toast.LENGTH_SHORT).show();
     }
 }

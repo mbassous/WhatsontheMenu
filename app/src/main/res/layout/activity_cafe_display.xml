@@ -33,22 +33,38 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="match_parent">
 
                 <TextView
-                    android:text="Hours: "
-                    android:padding="3dip"/>
+                    android:padding="3dip"
+                    android:text="Hours: " />
 
                 <TextView
                     android:id="@+id/hour_details"
-                    android:text="hours not set"
-                    android:padding="3dip"/>
+                    android:padding="3dip"
+                    android:text="hours not set" />
 
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:padding="3dip"
+                    android:text="Location: " />
+
+                <TextView
+                    android:id="@+id/locations"
+                    android:padding="3dip"
+                    android:text="lol" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" ><![CDATA[>
+                ]]></TableRow>
 
                 <TextView
                     android:text="Payment: "
@@ -59,7 +75,6 @@
                     android:text="lol"
                     android:padding="3dip" />
 
-            </TableRow>
         </TableLayout>
 
         <TextView
