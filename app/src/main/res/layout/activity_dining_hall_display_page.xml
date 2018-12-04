@@ -6,19 +6,40 @@
     android:layout_height="match_parent"
     tools:context=".DiningHallDisplayPage">
 
+    <TextView
+        android:id="@+id/DH_title"
+        android:layout_width="327dp"
+        android:layout_height="63dp"
+        android:padding="3dip"
+        android:text="Title"
+        android:textSize="40dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="10dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@color/colorAccent"
+        android:onClick="favorite"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/cafe_title"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">>
+        android:layout_height="449dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/DH_title"><![CDATA[>
 
-        <TextView
-            android:id="@+id/DH_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="3dip"
-            android:text="Title"
-            android:textSize="40dp" />
+        ]]>
 
         <TableLayout
             android:layout_width="match_parent"
@@ -46,6 +67,21 @@
 
                 <TextView
                     android:padding="3dip"
+                    android:text="location: " />
+
+                <TextView
+                    android:id="@+id/location"
+                    android:padding="3dip"
+                    android:text="lol" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:padding="3dip"
                     android:text="Payment: " />
 
                 <TextView
@@ -54,6 +90,7 @@
                     android:text="lol" />
 
             </TableRow>
+
         </TableLayout>
 
         <TextView

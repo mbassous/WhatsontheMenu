@@ -1,15 +1,13 @@
 package mbccjlkn.whatsonthemenu;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,6 +15,7 @@ import java.util.List;
 public class CafeDisplay extends AppCompatActivity {
 
     DBAccess db = MainActivity.dba;
+    ArrayList<Integer> Fav = MainActivity.Favorites;
 
     ExpandableListView expandableListView;
     ExpandableListAdapter expandableListAdapter;
@@ -31,6 +30,13 @@ public class CafeDisplay extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         int current = extras.getInt("id");
         ArrayList<String> list = db.viewEatery(current);
+
+        FloatingActionButton fab = findViewById(R.id.fab);
+        if (MainActivity.Favorites.contains((Integer) getIntent().getExtras().getInt("id"))){
+            fab.setImageResource(R.drawable.ic_star_favorited);
+        } else {
+            fab.setImageResource(R.drawable.ic_star_unfavorited);
+        }
 
         expandableListView = (ExpandableListView) findViewById(R.id.expandableListView);
         expandableListDetail = ExpandableListDataPump.getData(current);
@@ -79,9 +85,6 @@ public class CafeDisplay extends AppCompatActivity {
             }
         });
 
-        //db = new DBAccess(this);
-
-
         TextView title = findViewById(R.id.cafe_title);
         title.setText(list.get(0));
 
@@ -121,6 +124,47 @@ public class CafeDisplay extends AppCompatActivity {
 
 
         */
+        TextView loc = findViewById(R.id.location);
+        loc.setText(db.getLocation(extras.getInt("id")));
+    }
 
+    // favorite()
+    // pre: none
+    // post: if the eatery is unfavorited then this onClick will favorite it.
+    //       if the eatery is favorited then this onClick will unfavorite it.
+    public void favorite(View view) {
+
+        FloatingActionButton fab = findViewById(R.id.fab);
+        // If this eatery is already favorited
+        if (Fav.contains((Integer) getIntent().getExtras().getInt("id"))){
+            Toast.makeText(getApplicationContext(), "Unfavorited: " + FavoritesSelection.eateryNames[((Integer) getIntent().getExtras().getInt("id")) - 1], Toast.LENGTH_SHORT).show();
+            for (int i = 0; i < Fav.size(); i++){
+                if (Fav.get(i) == (Integer) getIntent().getExtras().getInt("id")){
+                    MainActivity.Favorites.remove(i);
+                    fab.setImageResource(R.drawable.ic_star_unfavorited);
+                    //fab.setImageDrawable(R.drawable.btn_star_big_off);
+                    //fab.setIcon(android.R.drawable.btn_star_big_off);
+                    break;
+                }
+            }
+            // If this eatery is not already favorited
+        } else {
+            Toast.makeText(getApplicationContext(), "Favorited: " + FavoritesSelection.eateryNames[((Integer) getIntent().getExtras().getInt("id")) - 1], Toast.LENGTH_SHORT).show();
+            Boolean placed = false;
+
+            for (int i = 0; i < Fav.size(); i++){
+                if (Fav.get(i) > (Integer) getIntent().getExtras().getInt("id")){
+                    MainActivity.Favorites.add(i, (Integer) getIntent().getExtras().getInt("id"));
+                    placed = true;
+                    break;
+                }
+            }
+
+            if (!placed){
+                MainActivity.Favorites.add((Integer) getIntent().getExtras().getInt("id"));
+            }
+
+            fab.setImageResource(R.drawable.ic_star_favorited);
+        }
     }
 }
