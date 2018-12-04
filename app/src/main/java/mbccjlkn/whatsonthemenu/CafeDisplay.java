@@ -18,6 +18,9 @@ public class CafeDisplay extends AppCompatActivity {
 
     DBAccess db = MainActivity.dba;
 
+
+    private int lastExpandedPosition = -1;
+
     ExpandableListView expandableListView;
     ExpandableListAdapter expandableListAdapter;
     List<String> expandableListTitle;
@@ -41,6 +44,12 @@ public class CafeDisplay extends AppCompatActivity {
 
             @Override
             public void onGroupExpand(int groupPosition) {
+
+                /*if (lastExpandedPosition != -1
+                        && groupPosition != lastExpandedPosition) {
+                    expandableListView.collapseGroup(lastExpandedPosition);
+                }
+                lastExpandedPosition = groupPosition;*/
 
 
                 /*Toast.makeText(getApplicationContext(),
@@ -80,8 +89,6 @@ public class CafeDisplay extends AppCompatActivity {
         });
 
         //db = new DBAccess(this);
-
-
 
 
         TextView title = findViewById(R.id.cafe_title);
