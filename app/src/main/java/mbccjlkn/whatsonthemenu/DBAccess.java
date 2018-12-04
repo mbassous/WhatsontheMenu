@@ -6,7 +6,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class DBAccess {
     private SQLiteOpenHelper openHelper;
@@ -84,5 +83,23 @@ public class DBAccess {
             rowData.add(cr.getString(i));
         }
         return rowData;
+    }
+
+    public String getURL(int row) {
+        String url;
+        String filters = "SELECT URL FROM Eateries WHERE id = " + row + ";";
+        Cursor cr = database.rawQuery(filters, null);
+        cr.moveToNext();
+        url = cr.getString(0);
+        return url;
+    }
+
+    public String getLocation(int row) {
+        String location;
+        String filters = "SELECT location FROM Eateries WHERE id = " + row + ";";
+        Cursor cr = database.rawQuery(filters, null);
+        cr.moveToNext();
+        location = cr.getString(0);
+        return location;
     }
 }

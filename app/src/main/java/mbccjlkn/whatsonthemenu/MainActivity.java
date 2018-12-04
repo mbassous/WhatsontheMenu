@@ -25,14 +25,11 @@ public class MainActivity extends AppCompatActivity {
         //dba.close();
         //initializeEateryTable();
         //initializeFoodTable();
-        Favorites.add(1);
-        Favorites.add(2);
-        Favorites.add(24);
-        Favorites.add(23);
 
+        /*
         if(Favorites.size() > 0)
             startActivity(new Intent(this, FavoritesSelection.class));
-
+        */
     }
 
     public void diningHall(View view){
