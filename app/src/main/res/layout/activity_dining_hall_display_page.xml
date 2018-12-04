@@ -9,7 +9,7 @@
     <TextView
         android:id="@+id/DH_title"
         android:layout_width="327dp"
-        android:layout_height="63dp"
+        android:layout_height="wrap_content"
         android:padding="3dip"
         android:text="Title"
         android:textSize="40dp" />
@@ -25,6 +25,7 @@
         android:layout_marginRight="16dp"
         android:background="@color/colorAccent"
         android:onClick="favorite"
+        app:backgroundTint="#fad15f"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -67,7 +68,7 @@
 
                 <TextView
                     android:padding="3dip"
-                    android:text="location: " />
+                    android:text="Location: " />
 
                 <TextView
                     android:id="@+id/location"
