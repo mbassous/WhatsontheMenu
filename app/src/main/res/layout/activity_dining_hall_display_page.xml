@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:padding="3dip"
         android:text="Title"
+        android:textColor="@android:color/background_dark"
         android:textSize="40dp" />
 
     <android.support.design.widget.FloatingActionButton
@@ -35,12 +36,15 @@
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="449dp"
+        android:layout_height="451dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DH_title"><![CDATA[>
+        app:layout_constraintTop_toBottomOf="@+id/DH_title">
 
-        ]]>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"/>
 
         <TableLayout
             android:layout_width="match_parent"
@@ -53,12 +57,17 @@
 
                 <TextView
                     android:padding="3dip"
-                    android:text="Hours: " />
+                    android:text="Hours: "
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/hour_details"
                     android:padding="3dip"
-                    android:text="hours not set" />
+                    android:text="hours not set"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp" />
 
             </TableRow>
 
@@ -68,12 +77,17 @@
 
                 <TextView
                     android:padding="3dip"
-                    android:text="Location: " />
+                    android:text="Location: "
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/location"
                     android:padding="3dip"
-                    android:text="lol" />
+                    android:text="lol"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp" />
 
             </TableRow>
 
@@ -83,23 +97,26 @@
 
                 <TextView
                     android:padding="3dip"
-                    android:text="Payment: " />
+                    android:text="Payment: "
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/payment_details"
                     android:padding="3dip"
-                    android:text="lol" />
+                    android:text="lol"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp" />
 
             </TableRow>
-
         </TableLayout>
 
-        <TextView
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="3dip"
-            android:text="Description"
-            android:textSize="20dp" />
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"/>
 
         <Button
             android:id="@+id/menuBTN"
