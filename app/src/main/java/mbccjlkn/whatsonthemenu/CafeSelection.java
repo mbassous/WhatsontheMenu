@@ -21,7 +21,6 @@ public class CafeSelection extends AppCompatActivity {
         for (View b: allButtons){
             OpenClosedBehavior.colorClosed((Button) b);
         }
-        //Toast.makeText(this, "" + (allButtons.size()), Toast.LENGTH_SHORT).show();
 
     }
 

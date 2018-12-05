@@ -5,7 +5,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class DBAccess {
     private SQLiteOpenHelper openHelper;
@@ -92,5 +95,21 @@ public class DBAccess {
         cr.moveToNext();
         url = cr.getString(0);
         return url;
+    }
+
+    public boolean isClosed(int eateryID) {
+        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+        String time = timeFormat.format(Calendar.getInstance().getTime());
+
+        SimpleDateFormat dayFormat = new SimpleDateFormat("E"); // the day of the week abbreviated
+        String day = dayFormat.format(new Date());
+
+        String filters = "SELECT 1 FROM Hours WHERE eateryID = " + eateryID +
+                " AND day LIKE '%" + day + "%'" +
+                " AND '" + time + "' > open" +
+                " AND '" + time + "' < closed;";
+        Cursor cr = database.rawQuery(filters, null);
+
+        return !cr.moveToNext();
     }
 }
