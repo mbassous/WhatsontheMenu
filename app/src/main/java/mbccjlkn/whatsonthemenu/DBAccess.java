@@ -104,9 +104,6 @@ public class DBAccess {
         SimpleDateFormat dayFormat = new SimpleDateFormat("E"); // the day of the week abbreviated
         String day = dayFormat.format(new Date());
 
-        time = "15:00";
-        day = "Thu";
-
         String filters = "SELECT 1 FROM Hours WHERE eateryID = " + eateryID +
                 " AND day LIKE '%" + day + "%'" +
                 " AND '" + time + "' > open" +
