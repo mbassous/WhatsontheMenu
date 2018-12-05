@@ -24,7 +24,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/rounded_button"
-                android:onClick="cowellCafe"
+                android:onClick="openCafe"
                 android:padding="10dp"
                 android:text="Cowell Coffee Shop"
                 android:textSize="17sp"
@@ -52,7 +52,7 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/PerkCoffeePhys"
-                android:onClick="perk4"/>
+                android:onClick="openCafe"/>
 
             <Button
                 android:id="@+id/College8Cafe"
@@ -64,7 +64,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/rounded_button"
-                android:onClick="collegeEight"
+                android:onClick="openCafe"
                 android:padding="10dp"
                 android:text="College 8 Cafe"
                 android:textSize="17sp"
@@ -93,7 +93,7 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/PerkCoffeeTerraFresca"
-                android:onClick="stevensonCafe"/>
+                android:onClick="openCafe"/>
 
             <Button
                 android:id="@+id/IvetaCafe"
@@ -113,7 +113,7 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/McHenryCafe"
-                android:onClick="iveta"/>
+                android:onClick="openCafe"/>
 
             <Button
                 android:id="@+id/Bowls"
@@ -133,7 +133,7 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/BananasJoe"
-                android:onClick="bowls"/>
+                android:onClick="openCafe"/>
 
             <Button
                 android:id="@+id/PerkCoffeePhys"
@@ -153,7 +153,7 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/PerkCoffeeEAM"
-                android:onClick="perk3"/>
+                android:onClick="openCafe"/>
 
             <TextView
                 android:id="@+id/textView4"
@@ -187,7 +187,7 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/OakesCafe"
-                android:onClick="owlsNest"/>
+                android:onClick="openCafe"/>
 
             <Button
                 android:id="@+id/McHenryCafe"
@@ -207,7 +207,7 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ExpressStore"
-                android:onClick="globalVillage"/>
+                android:onClick="openCafe"/>
 
             <Button
                 android:id="@+id/PerkCoffeeEAM"
@@ -219,7 +219,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/rounded_button"
-                android:onClick="perk2"
+                android:onClick="openCafe"
                 android:padding="10dp"
                 android:text="Perk Coffee (Earth and Marine)"
                 android:textSize="17sp"
@@ -239,7 +239,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/rounded_button"
-                android:onClick="kresgeCoop"
+                android:onClick="openCafe"
                 android:padding="10dp"
                 android:text="Kresge Co-op"
                 android:textSize="17sp"
@@ -267,7 +267,7 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/TerraFresca"
-                android:onClick="vivas"/>
+                android:onClick="openCafe"/>
 
             <Button
                 android:id="@+id/ExpressStore"
@@ -279,7 +279,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/rounded_button"
-                android:onClick="expressStore"
+                android:onClick="openCafe"
                 android:padding="10dp"
                 android:text="Express Store (Quarry)"
                 android:textSize="17sp"
@@ -299,7 +299,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/rounded_button"
-                android:onClick="perk1"
+                android:onClick="openCafe"
                 android:padding="10dp"
                 android:text="Perk Coffee (J Baskin)"
                 android:textSize="17sp"
@@ -327,7 +327,7 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/StevensonCoffeeHouse"
-                android:onClick="terraFresca"/>
+                android:onClick="openCafe"/>
 
             <Button
                 android:id="@+id/OakesCafe"
@@ -339,7 +339,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/rounded_button"
-                android:onClick="oakesCafe"
+                android:onClick="openCafe"
                 android:padding="10dp"
                 android:text="Oakes Cafe"
                 android:textSize="17sp"
@@ -367,7 +367,7 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/textView4"
                 app:layout_constraintTop_toBottomOf="@+id/textView4"
-                android:onClick="bananaJoes"/>
+                android:onClick="openCafe"/>
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 
