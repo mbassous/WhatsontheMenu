@@ -1,10 +1,13 @@
 package mbccjlkn.whatsonthemenu;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -15,7 +18,6 @@ import java.util.ArrayList;
 public class DiningHallDisplayPage extends AppCompatActivity {
 
     DBAccess db = MainActivity.dba;
-    ArrayList<Integer> Fav = MainActivity.Favorites;
     Button menu;
 
     @Override
@@ -27,11 +29,27 @@ public class DiningHallDisplayPage extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         ArrayList<String> list = db.viewEatery(extras.getInt("id"));
 
-        FloatingActionButton fabtwo = findViewById(R.id.fab2);
-        if (MainActivity.Favorites.contains((Integer) getIntent().getExtras().getInt("id"))){
-            fabtwo.setImageResource(R.drawable.ic_star_favorited);
-        } else {
-            fabtwo.setImageResource(R.drawable.ic_star_unfavorited);
+        {
+            SharedPreferences sp = this.getSharedPreferences("WOTM", Context.MODE_PRIVATE);
+            String spText = sp.getString("Info", "");
+            FloatingActionButton fab = findViewById(R.id.fab2);
+            ArrayList<Integer> Fav = new ArrayList<Integer>();
+
+            String[] savedIds;
+            if (spText.equals(""))
+                savedIds = new String[0];
+            else
+                savedIds = spText.split("-");
+
+            if (savedIds.length > 0)
+                for (int i = 0; i < savedIds.length; i++)
+                    Fav.add(Integer.parseInt(savedIds[i]));
+
+            if (Fav.contains((Integer) getIntent().getExtras().getInt("id"))) {
+                fab.setImageResource(R.drawable.ic_star_favorited);
+            } else {
+                fab.setImageResource(R.drawable.ic_star_unfavorited);
+            }
         }
 
         TextView title = findViewById(R.id.DH_title);
@@ -68,40 +86,68 @@ public class DiningHallDisplayPage extends AppCompatActivity {
     // post: if the eatery is unfavorited then this onClick will favorite it.
     //       if the eatery is favorited then this onClick will unfavorite it.
     public void favorite(View view) {
+        SharedPreferences sp = this.getSharedPreferences("WOTM", Context.MODE_PRIVATE);
+        String spText = sp.getString("Info", "");
+        FloatingActionButton fab = findViewById(R.id.fab2);
+        ArrayList<Integer> Fav = new ArrayList<Integer>();
 
-        FloatingActionButton fabtwo = findViewById(R.id.fab2);
-        // If this eatery is already favorited
-        if (Fav.contains((Integer) getIntent().getExtras().getInt("id"))){
-            Toast.makeText(getApplicationContext(), "Unfavorited: " + FavoritesSelection.eateryNames[((Integer) getIntent().getExtras().getInt("id")) - 1], Toast.LENGTH_SHORT).show();
-            for (int i = 0; i < Fav.size(); i++){
-                if (Fav.get(i) == (Integer) getIntent().getExtras().getInt("id")){
-                    MainActivity.Favorites.remove(i);
-                    fabtwo.setImageResource(R.drawable.ic_star_unfavorited);
-                    //fab.setImageDrawable(R.drawable.btn_star_big_off);
-                    //fab.setIcon(android.R.drawable.btn_star_big_off);
-                    break;
-                }
-            }
-            // If this eatery is not already favorited
-        } else {
-            Toast.makeText(getApplicationContext(), "Favorited: " + FavoritesSelection.eateryNames[((Integer) getIntent().getExtras().getInt("id")) - 1], Toast.LENGTH_SHORT).show();
-            Boolean placed = false;
-
-            for (int i = 0; i < Fav.size(); i++){
-                if (Fav.get(i) > (Integer) getIntent().getExtras().getInt("id")){
-                    MainActivity.Favorites.add(i, (Integer) getIntent().getExtras().getInt("id"));
-                    placed = true;
-                    break;
-                }
-            }
-
-            if (!placed){
-                MainActivity.Favorites.add((Integer) getIntent().getExtras().getInt("id"));
-            }
-
-            fabtwo.setImageResource(R.drawable.ic_star_favorited);
+        String[] savedIds;
+        if (spText.equals(""))
+            savedIds = new String[0];
+        else {
+            savedIds = spText.split("-");
+            for (int i = 0; i < savedIds.length; i++)
+                Fav.add(Integer.parseInt(savedIds[i]));
         }
+
+        if (savedIds.length == 0){
+            Log.d("Test", "Here");
+            Fav.add((Integer) getIntent().getExtras().getInt("id"));
+            fab.setImageResource(R.drawable.ic_star_favorited);
+            Toast.makeText(getApplicationContext(), "Favorited: " + FavoritesSelection.eateryNames[((Integer) getIntent().getExtras().getInt("id")) - 1], Toast.LENGTH_SHORT).show();
+        } else /* savedIds.length > 0 */{
+            // If this eatery is already favorited
+            if (Fav.contains((Integer) getIntent().getExtras().getInt("id"))) {
+                Toast.makeText(getApplicationContext(), "Unfavorited: " + FavoritesSelection.eateryNames[((Integer) getIntent().getExtras().getInt("id")) - 1], Toast.LENGTH_SHORT).show();
+                for (int i = 0; i < Fav.size(); i++) {
+                    if (Fav.get(i) == (Integer) getIntent().getExtras().getInt("id")) {
+                        Fav.remove(i);
+                        fab.setImageResource(R.drawable.ic_star_unfavorited);
+                        //fab.setImageDrawable(R.drawable.btn_star_big_off);
+                        //fab.setIcon(android.R.drawable.btn_star_big_off);
+                        break;
+                    }
+                }
+                // If this eatery is not already favorited
+            } else {
+                Toast.makeText(getApplicationContext(), "Favorited: " + FavoritesSelection.eateryNames[((Integer) getIntent().getExtras().getInt("id")) - 1], Toast.LENGTH_SHORT).show();
+                Boolean placed = false;
+
+                for (int i = 0; i < Fav.size(); i++) {
+                    if (Fav.get(i) > (Integer) getIntent().getExtras().getInt("id")) {
+                        Fav.add(i, (Integer) getIntent().getExtras().getInt("id"));
+                        placed = true;
+                        break;
+                    }
+                }
+
+                if (!placed) {
+                    Fav.add((Integer) getIntent().getExtras().getInt("id"));
+                }
+
+                fab.setImageResource(R.drawable.ic_star_favorited);
+            }
+        }
+
+        String toAdd = "";
+        for (int i = 0; i < Fav.size(); i++){
+            if (i == (Fav.size() - 1))
+                toAdd += Fav.get(i);
+            else
+                toAdd += (Fav.get(i) + "-");
+        }
+
+        sp.edit().clear().commit();
+        sp.edit().putString("Info", toAdd).apply();
     }
-
-
 }
