@@ -31,12 +31,13 @@ public class DiningHallDisplayPage extends AppCompatActivity {
         setContentView(R.layout.activity_dining_hall_display_page);
         menu = (Button) findViewById(R.id.menuBTN);
 
-        Bundle extras = getIntent().getExtras();
+        final Bundle extras = getIntent().getExtras();
+        int current = extras.getInt("id");
         ArrayList<String> list = db.viewEatery(extras.getInt("id"));
 
         ImageView imageView = findViewById(R.id.dhImage);
         AssetManager assetManager = getAssets();
-        String file = "img"+extras+".jpg";
+        String file = "img"+current+".jpg";
 
         InputStream is = null;
         try {
@@ -48,7 +49,7 @@ public class DiningHallDisplayPage extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        {
+
             SharedPreferences sp = this.getSharedPreferences("WOTM", Context.MODE_PRIVATE);
             String spText = sp.getString("Info", "");
             FloatingActionButton fab = findViewById(R.id.fab2);
@@ -69,7 +70,7 @@ public class DiningHallDisplayPage extends AppCompatActivity {
             } else {
                 fab.setImageResource(R.drawable.ic_star_unfavorited);
             }
-        }
+
 
         TextView title = findViewById(R.id.DH_title);
         title.setText(list.get(0));
