@@ -6,15 +6,43 @@
     android:layout_height="match_parent"
     tools:context=".DiningHallDisplayPage">
 
+    <ImageView
+        android:id="@+id/dhImage"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/wotm_icon" />
+
+    <Space
+        android:id="@+id/spacer"
+        android:layout_width="20dp"
+        android:layout_height="15dp"
+        app:layout_constraintRight_toRightOf="@+id/dhImage"
+        app:layout_constraintTop_toBottomOf="@+id/dhImage" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:foregroundGravity="right|bottom"
+
+        android:onClick="favorite"
+        app:layout_constraintBottom_toBottomOf="@+id/spacer"
+        app:layout_constraintRight_toLeftOf="@+id/spacer"
+        />
+
     <TextView
         android:id="@+id/DH_title"
         android:layout_width="327dp"
         android:layout_height="63dp"
         android:padding="3dip"
         android:text="Title"
-        android:textSize="40dp" />
+        android:textSize="40dp"
+        app:layout_constraintTop_toBottomOf="@+id/dhImage"/>
 
-    <android.support.design.widget.FloatingActionButton
+    <!--<android.support.design.widget.FloatingActionButton
         android:id="@+id/fab2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,14 +57,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/cafe_title"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />-->
 
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="449dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/DH_title">
 
         <TableLayout
