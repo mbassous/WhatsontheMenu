@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
+
+import java.util.ArrayList;
 
 public class FoodTruckSelection extends AppCompatActivity {
 
@@ -11,23 +14,19 @@ public class FoodTruckSelection extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_truck_selection);
+
+        View vg = findViewById(android.R.id.content);
+        ArrayList<View> allButtons = vg.getTouchables();
+
+        for (View b: allButtons){
+            OpenClosedBehavior.colorClosed((Button) b);
+        }
     }
 
-    public void cruzNGourmet(View view){
+    public void openTruck(View view){
+        int id = Integer.parseInt(view.getTag().toString());
         Intent I = new Intent(this, CafeDisplay.class);
-        I.putExtra("id", 1);
-        startActivity(I);
-    }
-
-    public void drunkMonkey(View view){
-        Intent I = new Intent(this, CafeDisplay.class);
-        I.putExtra("id", 2);
-        startActivity(I);
-    }
-
-    public void raymondsCatering(View view){
-        Intent I = new Intent(this, CafeDisplay.class);
-        I.putExtra("id", 3);
+        I.putExtra("id", id);
         startActivity(I);
     }
 
