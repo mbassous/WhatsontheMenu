@@ -113,13 +113,4 @@ public class DBAccess {
 
         return !cr.moveToNext();
     }
-
-    public String getLocation(int row) {
-        String location;
-        String filters = "SELECT location FROM Eateries WHERE id = " + row + ";";
-        Cursor cr = database.rawQuery(filters, null);
-        cr.moveToNext();
-        location = cr.getString(0);
-        return location;
-    }
 }
