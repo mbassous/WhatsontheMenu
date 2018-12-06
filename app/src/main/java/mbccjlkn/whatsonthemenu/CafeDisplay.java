@@ -1,23 +1,36 @@
 package mbccjlkn.whatsonthemenu;
 
+
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.AssetManager;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
+
 public class CafeDisplay extends AppCompatActivity {
 
     DBAccess db = MainActivity.dba;
+
+
     ExpandableListView expandableListView;
     ExpandableListAdapter expandableListAdapter;
     List<String> expandableListTitle;
@@ -26,49 +39,105 @@ public class CafeDisplay extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_cafe_display);
 
-        Bundle extras = getIntent().getExtras();
+        final Bundle extras = getIntent().getExtras();
         int current = extras.getInt("id");
-        ArrayList<String> list = db.viewEatery(current);
 
-        {
-            SharedPreferences sp = this.getSharedPreferences("WOTM", Context.MODE_PRIVATE);
-            String spText = sp.getString("Info", "");
-            FloatingActionButton fab = findViewById(R.id.fab);
-            ArrayList<Integer> Fav = new ArrayList<Integer>();
+        // Update size of linear layouts
+        LinearLayout layout = findViewById(R.id.linearLayout);
+        ViewGroup.LayoutParams params = layout.getLayoutParams();
+        params.height = WRAP_CONTENT;
+        layout.setLayoutParams(params);
 
-            String[] savedIds;
-            if (spText.equals(""))
-                savedIds = new String[0];
-            else
-                savedIds = spText.split("-");
+        LinearLayout layout2 = findViewById(R.id.parentLinearLayout);
+        ViewGroup.LayoutParams params2 = layout2.getLayoutParams();
+        params2.height = WRAP_CONTENT;
+        layout2.setLayoutParams(params2);
 
-            if (savedIds.length > 0)
-                for (int i = 0; i < savedIds.length; i++)
-                    Fav.add(Integer.parseInt(savedIds[i]));
 
-            if (Fav.contains((Integer) getIntent().getExtras().getInt("id"))) {
-                fab.setImageResource(R.drawable.ic_star_favorited);
-            } else {
-                fab.setImageResource(R.drawable.ic_star_unfavorited);
-            }
+
+        setContentView(R.layout.activity_cafe_display);
+
+        ImageView imageView = findViewById(R.id.cafeImage);
+        AssetManager assetManager = getAssets();
+        String file = "img"+current+".jpg";
+
+        InputStream is = null;
+        try {
+            is = assetManager.open(file);
+            Drawable d = Drawable.createFromStream(is, null);
+            // set image to ImageView
+            imageView.setImageDrawable(d);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
-        expandableListView = (ExpandableListView) findViewById(R.id.expandableListView);
+
+
+
+        ArrayList<String> list = db.viewEatery(current);
+
+        SharedPreferences sp = this.getSharedPreferences("WOTM", Context.MODE_PRIVATE);
+        String spText = sp.getString("Info", "");
+        FloatingActionButton fab = findViewById(R.id.fab);
+        ArrayList<Integer> Fav = new ArrayList<Integer>();
+
+        String[] savedIds;
+        if (spText.equals(""))
+            savedIds = new String[0];
+        else
+            savedIds = spText.split("-");
+
+        if (savedIds.length > 0)
+            for (int i = 0; i < savedIds.length; i++)
+                Fav.add(Integer.parseInt(savedIds[i]));
+
+        if (Fav.contains((Integer) getIntent().getExtras().getInt("id"))) {
+            fab.setImageResource(R.drawable.ic_star_favorited);
+        } else {
+            fab.setImageResource(R.drawable.ic_star_unfavorited);
+        }
+
+
+        expandableListView = findViewById(R.id.expandableListView);
         expandableListDetail = ExpandableListDataPump.getData(current);
-        expandableListTitle = new ArrayList<String>(expandableListDetail.keySet());
+        expandableListTitle = new ArrayList<>(expandableListDetail.keySet());
         expandableListAdapter = new CustomExpandableListAdapter(this, expandableListTitle, expandableListDetail);
         expandableListView.setAdapter(expandableListAdapter);
+
+
+        expandableListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+
+            @Override
+            public boolean onGroupClick(ExpandableListView parent, View v,
+                                        int groupPosition, long id) {
+                setListViewHeight(parent, groupPosition);
+
+
+
+                return false;
+
+            }
+        });
+
         expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
 
             @Override
             public void onGroupExpand(int groupPosition) {
 
+                LinearLayout layout = findViewById(R.id.linearLayout);
+                ViewGroup.LayoutParams params = layout.getLayoutParams();
+                params.height = WRAP_CONTENT;
+                layout.setLayoutParams(params);
 
-                /*Toast.makeText(getApplicationContext(),
-                        expandableListTitle.get(groupPosition) + " List Expanded.",
-                        Toast.LENGTH_SHORT).show();*/
+                LinearLayout layout2 = findViewById(R.id.parentLinearLayout);
+                ViewGroup.LayoutParams params2 = layout2.getLayoutParams();
+                params2.height = WRAP_CONTENT;
+                layout2.setLayoutParams(params2);
+
+                //setContentView(R.layout.activity_cafe_display);
             }
         });
 
@@ -76,9 +145,6 @@ public class CafeDisplay extends AppCompatActivity {
 
             @Override
             public void onGroupCollapse(int groupPosition) {
-                /*Toast.makeText(getApplicationContext(),
-                        expandableListTitle.get(groupPosition) + " List Collapsed.",
-                        Toast.LENGTH_SHORT).show();*/
 
             }
         });
@@ -90,14 +156,6 @@ public class CafeDisplay extends AppCompatActivity {
 
                 // Here is where we would have detailed info about food items show up
 
-                /*Toast.makeText(
-                        getApplicationContext(),
-                        expandableListTitle.get(groupPosition)
-                                + " -> "
-                                + expandableListDetail.get(
-                                expandableListTitle.get(groupPosition)).get(
-                                childPosition), Toast.LENGTH_SHORT
-                ).show();*/
                 return false;
             }
         });
@@ -119,28 +177,8 @@ public class CafeDisplay extends AppCompatActivity {
         TextView payment = findViewById(R.id.payment_details);
         payment.setText(result);
 
-        /////////////////////////////////////////////////
-
         findViewById(R.id.menu_header).setVisibility(View.VISIBLE);
 
-        /*
-        ArrayList<String> foodlist = db.viewFood(extras.getInt("id"), "ass");
-
-        //show menu header if menu exists
-        if (foodlist.size() > 0) {
-            findViewById(R.id.menu_header).setVisibility(View.VISIBLE);
-        }
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                this,
-                android.R.layout.simple_list_item_1,
-                foodlist);
-        //configure list view
-        //ListView menu = (ListView) findViewById(R.id.menu_list);
-        //menu.setAdapter(adapter);
-
-
-        */
         TextView loc = findViewById(R.id.location);
         loc.setText(db.getLocation(extras.getInt("id")));
     }
@@ -153,6 +191,7 @@ public class CafeDisplay extends AppCompatActivity {
         SharedPreferences sp = this.getSharedPreferences("WOTM", Context.MODE_PRIVATE);
         String spText = sp.getString("Info", "");
         FloatingActionButton fab = findViewById(R.id.fab);
+
         ArrayList<Integer> Fav = new ArrayList<Integer>();
 
         String[] savedIds;
@@ -193,6 +232,7 @@ public class CafeDisplay extends AppCompatActivity {
                     }
                 }
 
+
                 if (!placed) {
                     Fav.add((Integer) getIntent().getExtras().getInt("id"));
                 }
@@ -212,4 +252,41 @@ public class CafeDisplay extends AppCompatActivity {
         sp.edit().clear().commit();
         sp.edit().putString("Info", toAdd).apply();
     }
+
+    private void setListViewHeight(ExpandableListView listView,
+                                   int group) {
+        ExpandableListAdapter listAdapter = (ExpandableListAdapter) listView.getExpandableListAdapter();
+        int totalHeight = 0;
+        int desiredWidth = View.MeasureSpec.makeMeasureSpec(listView.getWidth(),
+                View.MeasureSpec.EXACTLY);
+        for (int i = 0; i < listAdapter.getGroupCount(); i++) {
+            View groupItem = listAdapter.getGroupView(i, false, null, listView);
+            groupItem.measure(desiredWidth, View.MeasureSpec.UNSPECIFIED);
+
+            totalHeight += groupItem.getMeasuredHeight();
+
+            if (((listView.isGroupExpanded(i)) && (i != group))
+                    || ((!listView.isGroupExpanded(i)) && (i == group))) {
+                for (int j = 0; j < listAdapter.getChildrenCount(i); j++) {
+                    View listItem = listAdapter.getChildView(i, j, false, null,
+                            listView);
+                    listItem.measure(desiredWidth, View.MeasureSpec.UNSPECIFIED);
+
+                    totalHeight += listItem.getMeasuredHeight();
+
+                }
+            }
+        }
+
+        ViewGroup.LayoutParams params = listView.getLayoutParams();
+        int height = totalHeight
+                + (listView.getDividerHeight() * (listAdapter.getGroupCount() - 1));
+        if (height < 10)
+            height = 100;
+        params.height = height;
+        listView.setLayoutParams(params);
+        listView.requestLayout();
+
+    }
 }
+

@@ -6,146 +6,182 @@
     android:layout_height="match_parent"
     tools:context=".CafeDisplay">
 
-    <TextView
-        android:id="@+id/cafe_title"
-        android:layout_width="327dp"
-        android:layout_height="wrap_content"
-        android:padding="3dip"
-        android:text="Title"
-        android:textColor="@android:color/background_dark"
-        android:textSize="40dp" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
-        android:layout_margin="10dp"
-        android:background="@color/colorAccent"
-        android:onClick="favorite"
-        app:backgroundTint="#fad15f"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/cafe_title"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/activity_expandable_scroll_view"
         android:layout_width="match_parent"
-        android:layout_height="451dp"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/cafe_title">
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/darker_gray"/>
 
-        <TableLayout
+        <LinearLayout
+            android:id="@+id/parentLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="10dip">
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
 
-            <TableRow
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/frameLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+                <ImageView
+                    android:id="@+id/cafeImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/wotm_icon" />
+
+                <Space
+                    android:id="@+id/spacer"
+                    android:layout_width="20dp"
+                    android:layout_height="15dp"
+                    app:layout_constraintRight_toRightOf="@+id/cafeImage"
+                    app:layout_constraintTop_toBottomOf="@+id/cafeImage" />
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorAccent"
+                    android:foregroundGravity="right|bottom"
+
+                    android:onClick="favorite"
+                    app:layout_constraintBottom_toBottomOf="@+id/spacer"
+                    app:layout_constraintRight_toLeftOf="@+id/spacer"
+                    />
+
+
                 <TextView
+                    android:id="@+id/cafe_title"
+                    android:layout_width="334dp"
+                    android:layout_height="wrap_content"
                     android:padding="3dip"
-                    android:text="Hours: "
+                    android:text="Title"
                     android:textColor="@android:color/background_dark"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textSize="40dp"
+                    app:layout_constraintTop_toBottomOf="@+id/cafeImage" />
 
-                <TextView
-                    android:id="@+id/hour_details"
-                    android:padding="3dip"
-                    android:text="hours not set"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
+                <LinearLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="451dp"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toBottomOf="@+id/cafe_title">
 
-            </TableRow>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@android:color/darker_gray" />
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="3dip"
+                        android:text="Description"
+                        android:textColor="@android:color/background_dark"
+                        android:textSize="20dp" />
 
-                <TextView
-                    android:padding="3dip"
-                    android:text="Location: "
-                    android:textColor="@android:color/background_dark"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dip">
 
-                <TextView
-                    android:id="@+id/location"
-                    android:padding="3dip"
-                    android:text="lol"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
 
-            </TableRow>
+                            <TextView
+                                android:layout_height="match_parent"
+                                android:padding="3dip"
+                                android:text="Hours: "
+                                android:textColor="@android:color/background_dark"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-            </TableRow>
+                            <TextView
+                                android:id="@+id/hour_details"
+                                android:padding="3dip"
+                                android:text="hours not set"
+                                android:textColor="@android:color/black"
+                                android:textSize="16sp" />
 
-            <TextView
-                android:padding="3dip"
-                android:text="Payment: "
-                android:textColor="@android:color/background_dark"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                        </TableRow>
 
-            <TextView
-                android:id="@+id/payment_details"
-                android:padding="3dip"
-                android:text="lol"
-                android:textColor="@android:color/black"
-                android:textSize="16sp" />
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
 
-        </TableLayout>
+                            <TextView
+                                android:padding="3dip"
+                                android:text="Location: "
+                                android:textColor="@android:color/background_dark"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/darker_gray"/>
+                            <TextView
+                                android:id="@+id/location"
+                                android:padding="3dip"
+                                android:text="lol"
+                                android:textColor="@android:color/black"
+                                android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/menu_header"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="3dip"
-            android:text="Menu"
-            android:textColor="@android:color/background_dark"
-            android:textSize="20dp"
-            android:visibility="invisible" />
+                        </TableRow>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context=".CafeDisplay">
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"></TableRow>
 
-            <ExpandableListView
-                android:id="@+id/expandableListView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:divider="@android:color/darker_gray"
-                android:dividerHeight="0.5dp"
-                android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft">
+                        <TextView
+                            android:padding="3dip"
+                            android:text="Payment: "
+                            android:textColor="@android:color/background_dark"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
-            </ExpandableListView>
+                        <TextView
+                            android:id="@+id/payment_details"
+                            android:padding="3dip"
+                            android:text="lol"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp" />
 
-        </RelativeLayout>
+                    </TableLayout>
 
-        <!--<ListView
-            android:id="@+id/menu_list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />-->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@android:color/darker_gray"/>
 
-    </LinearLayout>
+                    <TextView
+                        android:id="@+id/menu_header"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="3dip"
+                        android:text="Menu"
+                        android:textColor="@android:color/background_dark"
+                        android:textSize="20dp"
+                        android:visibility="invisible" />
+
+                    <ExpandableListView
+                        android:id="@+id/expandableListView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:divider="@android:color/darker_gray"
+                        android:dividerHeight="0.5dp"
+                        android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft">
+
+                    </ExpandableListView>
+
+                </LinearLayout>
+
+            </android.support.constraint.ConstraintLayout>
+
+        </LinearLayout>
+    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>
