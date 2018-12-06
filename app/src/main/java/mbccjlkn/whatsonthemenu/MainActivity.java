@@ -1,18 +1,17 @@
 package mbccjlkn.whatsonthemenu;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
-
 import java.util.ArrayList;
-
 
 public class MainActivity extends AppCompatActivity {
 
     public static DBAccess dba;
-    public static ArrayList<Integer> Favorites = new ArrayList<Integer>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,19 +19,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         dba = DBAccess.getInstance(this);
         dba.open();
-        //ArrayList<String> list = dba.viewEatery(1);
-        //Log.d("meme", list.get(1));
         //dba.close();
-        //initializeEateryTable();
-        //initializeFoodTable();
-        Favorites.add(1);
-        Favorites.add(2);
-        Favorites.add(24);
-        Favorites.add(23);
-
-        if(Favorites.size() > 0)
-            startActivity(new Intent(this, FavoritesSelection.class));
-
     }
 
     public void diningHall(View view){
@@ -51,21 +38,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void favorites(View view){
-        if(Favorites.size() == 0){
+        SharedPreferences sp = this.getSharedPreferences("WOTM", Context.MODE_PRIVATE);
+        String spText = sp.getString("Info", "");
+        ArrayList<Integer> Fav = new ArrayList<Integer>();
+
+        String[] savedIds;
+        if (spText.equals(""))
+            savedIds = new String[0];
+        else
+            savedIds = spText.split("-");
+
+        if(savedIds.length == 0)
             Toast.makeText(view.getContext(), "No Favorites To Display", Toast.LENGTH_LONG).show();
-        } else{
-            Intent I = new Intent(this, FavoritesSelection.class);
-            startActivity(I);
-        }
-
+        else
+            startActivity(new Intent(this, FavoritesSelection.class));
     }
-
-
-
-
-
-
-    // initializeEateryTable()
-    // pre: none
-    // post: adds specified eateries into TABLE_EATERY
 }
