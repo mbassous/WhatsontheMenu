@@ -1,5 +1,6 @@
 package mbccjlkn.whatsonthemenu;
 
+import android.graphics.Color;
 import android.widget.Button;
 
 public class OpenClosedBehavior {
@@ -8,7 +9,7 @@ public class OpenClosedBehavior {
     public static void colorClosed(Button b){
         if (eateryClosed(b)) {
             b.setBackgroundResource(R.drawable.rounded_button_gray);
-            b.setTextColor(0xFFCCCCDD);
+            b.setTextColor(Color.parseColor("#8888bb"));
         }
     }
 
