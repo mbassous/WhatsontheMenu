@@ -71,6 +71,7 @@ public class FavoritesSelection extends AppCompatActivity {
             buttons[i].setTextColor(getResources().getColor(R.color.colorPrimaryDark));
             buttons[i].setBackgroundResource(R.drawable.rounded_button);
             buttons[i].setId(Fav.get(i));
+            buttons[i].setTag(savedIds[i]);
             ll.addView(buttons[i], params);
 
             buttons[i].setOnClickListener(new View.OnClickListener() {
@@ -93,6 +94,15 @@ public class FavoritesSelection extends AppCompatActivity {
             spaces[i].setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 40));
 
             ll.addView(spaces[i]);
+
+
+            // color buttons
+            View vg = findViewById(android.R.id.content);
+            ArrayList<View> allButtons = vg.getTouchables();
+
+            for (View b: allButtons){
+                OpenClosedBehavior.colorClosed((Button) b);
+            }
         }
     }
 

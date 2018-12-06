@@ -8,12 +8,13 @@
 
     <Button
         android:id="@+id/button"
+        android:tag="2"
         style="@style/wotmButton"
         android:layout_width="300dp"
         android:layout_height="60dp"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/rounded_button"
-        android:onClick="drunkMonkey"
+        android:onClick="openTruck"
         android:padding="10dp"
         android:text="Drunk Monkey"
         android:textSize="24sp"
@@ -25,12 +26,13 @@
 
     <Button
         android:id="@+id/CruzGourmetBTN"
+        android:tag="1"
         style="@style/wotmButton"
         android:layout_width="300dp"
         android:layout_height="60dp"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/rounded_button"
-        android:onClick="cruzNGourmet"
+        android:onClick="openTruck"
         android:padding="10dp"
         android:text="Cruz N' Gourmet"
         android:textSize="24sp"
@@ -42,12 +44,13 @@
 
     <Button
         android:id="@+id/RaymondCateringBTN"
+        android:tag="3"
         style="@style/wotmButton"
         android:layout_width="300dp"
         android:layout_height="60dp"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/rounded_button"
-        android:onClick="raymondsCatering"
+        android:onClick="openTruck"
         android:padding="10dp"
         android:text="Raymond's Catering"
         android:textSize="24sp"
