@@ -10,6 +10,9 @@ public class OpenClosedBehavior {
         if (eateryClosed(b)) {
             b.setBackgroundResource(R.drawable.rounded_button_gray);
             b.setTextColor(Color.parseColor("#8888bb"));
+        } else {
+            b.setBackgroundResource(R.drawable.rounded_button);
+            b.setTextColor(Color.parseColor("#024b8b"));
         }
     }
 

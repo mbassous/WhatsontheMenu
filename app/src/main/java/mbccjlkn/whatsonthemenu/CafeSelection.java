@@ -14,6 +14,12 @@ public class CafeSelection extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cafe_selection);
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
 
         View vg = findViewById(android.R.id.content);
         ArrayList<View> allButtons = vg.getTouchables();
@@ -21,7 +27,6 @@ public class CafeSelection extends AppCompatActivity {
         for (View b: allButtons){
             OpenClosedBehavior.colorClosed((Button) b);
         }
-
     }
 
     public void openCafe(View view){
@@ -30,5 +35,4 @@ public class CafeSelection extends AppCompatActivity {
         I.putExtra("id", id);
         startActivity(I);
     }
-
 }

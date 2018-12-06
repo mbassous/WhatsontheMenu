@@ -14,6 +14,11 @@ public class FoodTruckSelection extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_truck_selection);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
 
         View vg = findViewById(android.R.id.content);
         ArrayList<View> allButtons = vg.getTouchables();
