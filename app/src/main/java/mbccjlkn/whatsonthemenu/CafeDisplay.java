@@ -1,5 +1,9 @@
 package mbccjlkn.whatsonthemenu;
 
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -7,9 +11,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -21,6 +30,7 @@ public class CafeDisplay extends AppCompatActivity {
     DBAccess db = MainActivity.dba;
     ArrayList<Integer> Fav = MainActivity.Favorites;
 
+
     ExpandableListView expandableListView;
     ExpandableListAdapter expandableListAdapter;
     List<String> expandableListTitle;
@@ -29,8 +39,11 @@ public class CafeDisplay extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_cafe_display);
 
+        final Bundle extras = getIntent().getExtras();
+        int current = extras.getInt("id");
 
         // Update size of linear layouts
         LinearLayout layout = findViewById(R.id.linearLayout);
@@ -44,20 +57,38 @@ public class CafeDisplay extends AppCompatActivity {
         layout2.setLayoutParams(params2);
 
 
-        final Bundle extras = getIntent().getExtras();
-        int current = extras.getInt("id");
+
+        setContentView(R.layout.activity_cafe_display);
+
+        ImageView imageView = findViewById(R.id.cafeImage);
+        AssetManager assetManager = getAssets();
+        String file = "img"+current+".jpg";
+
+        InputStream is = null;
+        try {
+            is = assetManager.open(file);
+            Drawable d = Drawable.createFromStream(is, null);
+            // set image to ImageView
+            imageView.setImageDrawable(d);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+
+
         ArrayList<String> list = db.viewEatery(current);
 
         FloatingActionButton fab = findViewById(R.id.fab);
-        if (MainActivity.Favorites.contains((Integer) getIntent().getExtras().getInt("id"))){
+        if (MainActivity.Favorites.contains( getIntent().getExtras().getInt("id"))){
             fab.setImageResource(R.drawable.ic_star_favorited);
         } else {
             fab.setImageResource(R.drawable.ic_star_unfavorited);
         }
 
-        expandableListView = (ExpandableListView) findViewById(R.id.expandableListView);
+        expandableListView = findViewById(R.id.expandableListView);
         expandableListDetail = ExpandableListDataPump.getData(current);
-        expandableListTitle = new ArrayList<String>(expandableListDetail.keySet());
+        expandableListTitle = new ArrayList<>(expandableListDetail.keySet());
         expandableListAdapter = new CustomExpandableListAdapter(this, expandableListTitle, expandableListDetail);
         expandableListView.setAdapter(expandableListAdapter);
 
@@ -69,6 +100,8 @@ public class CafeDisplay extends AppCompatActivity {
                                         int groupPosition, long id) {
                 setListViewHeight(parent, groupPosition);
 
+
+
                 return false;
 
             }
@@ -79,6 +112,17 @@ public class CafeDisplay extends AppCompatActivity {
             @Override
             public void onGroupExpand(int groupPosition) {
 
+                LinearLayout layout = findViewById(R.id.linearLayout);
+                ViewGroup.LayoutParams params = layout.getLayoutParams();
+                params.height = WRAP_CONTENT;
+                layout.setLayoutParams(params);
+
+                LinearLayout layout2 = findViewById(R.id.parentLinearLayout);
+                ViewGroup.LayoutParams params2 = layout2.getLayoutParams();
+                params2.height = WRAP_CONTENT;
+                layout2.setLayoutParams(params2);
+
+                //setContentView(R.layout.activity_cafe_display);
             }
         });
 
@@ -192,7 +236,7 @@ public class CafeDisplay extends AppCompatActivity {
         int height = totalHeight
                 + (listView.getDividerHeight() * (listAdapter.getGroupCount() - 1));
         if (height < 10)
-            height = 200;
+            height = 100;
         params.height = height;
         listView.setLayoutParams(params);
         listView.requestLayout();

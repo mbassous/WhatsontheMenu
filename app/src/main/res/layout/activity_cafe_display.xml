@@ -18,30 +18,51 @@
             android:id="@+id/parentLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:focusableInTouchMode="true">
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/cafe_title"
-                android:layout_width="334dp"
-                android:layout_height="wrap_content"
-                android:padding="3dip"
-                android:text="Title"
-                android:textSize="40dp" />
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/frameLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/fab"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end|bottom"
-                android:layout_margin="10dp"
-                android:background="@color/colorAccent"
-                android:onClick="favorite"
-                app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/cafe_title"
-                app:layout_constraintTop_toTopOf="parent" />
+                <ImageView
+                    android:id="@+id/cafeImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/wotm_icon" />
+
+                <Space
+                    android:id="@+id/spacer"
+                    app:layout_constraintTop_toBottomOf="@+id/cafeImage"
+                    app:layout_constraintLeft_toRightOf="@+id/cafe_title"
+                    android:layout_width="35dp"
+                    android:layout_height="15dp" />
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorAccent"
+                    android:foregroundGravity="right|bottom"
+
+                    android:onClick="favorite"
+                    app:layout_constraintBottom_toBottomOf="@+id/spacer"
+                    app:layout_constraintLeft_toRightOf="@+id/cafe_title"
+                    />
+
+                <TextView
+                    android:id="@+id/cafe_title"
+                    android:layout_width="334dp"
+                    android:layout_height="wrap_content"
+                    android:padding="3dip"
+                    android:text="Title"
+                    android:textSize="40dp"
+                    app:layout_constraintTop_toBottomOf="@+id/cafeImage" />
+
+            </android.support.constraint.ConstraintLayout>
 
             <LinearLayout
                 android:id="@+id/linearLayout"
