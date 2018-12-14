@@ -133,8 +133,6 @@ public class DiningHallDisplayPage extends AppCompatActivity {
                     if (Fav.get(i) == (Integer) getIntent().getExtras().getInt("id")) {
                         Fav.remove(i);
                         fab.setImageResource(R.drawable.ic_star_unfavorited);
-                        //fab.setImageDrawable(R.drawable.btn_star_big_off);
-                        //fab.setIcon(android.R.drawable.btn_star_big_off);
                         break;
                     }
                 }

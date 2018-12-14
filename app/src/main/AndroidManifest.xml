@@ -19,7 +19,6 @@
         <activity android:name=".DiningHallSelection" />
         <activity android:name=".CafeSelection" />
         <activity android:name=".FoodTruckSelection" />
-        <activity android:name=".Map" />
         <activity android:name=".CafeDisplay" />
         <activity android:name=".FavoritesSelection" />
         <activity android:name=".DiningHallDisplayPage"></activity>

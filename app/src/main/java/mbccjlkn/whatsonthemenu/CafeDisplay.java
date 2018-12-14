@@ -208,7 +208,7 @@ public class CafeDisplay extends AppCompatActivity {
             Fav.add((Integer) getIntent().getExtras().getInt("id"));
             fab.setImageResource(R.drawable.ic_star_favorited);
             Toast.makeText(getApplicationContext(), "Favorited: " + FavoritesSelection.eateryNames[((Integer) getIntent().getExtras().getInt("id")) - 1], Toast.LENGTH_SHORT).show();
-        } else /* savedIds.length > 0 */{
+        } else {
             // If this eatery is already favorited
             if (Fav.contains((Integer) getIntent().getExtras().getInt("id"))) {
                 Toast.makeText(getApplicationContext(), "Unfavorited: " + FavoritesSelection.eateryNames[((Integer) getIntent().getExtras().getInt("id")) - 1], Toast.LENGTH_SHORT).show();

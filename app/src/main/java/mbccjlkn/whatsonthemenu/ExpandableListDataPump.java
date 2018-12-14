@@ -20,10 +20,6 @@ public class ExpandableListDataPump {
             expandableListDetail.put(temp, db.viewFood(i, temp));
         }
 
-        //ArrayList<String> foodlist = db.viewFood(i);
-
-        //expandableListDetail.put("ALL FOOD", foodlist);
-
         return expandableListDetail;
     }
 }
