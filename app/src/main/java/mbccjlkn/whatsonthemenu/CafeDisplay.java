@@ -56,13 +56,11 @@ public class CafeDisplay extends AppCompatActivity {
         params2.height = WRAP_CONTENT;
         layout2.setLayoutParams(params2);
 
-
-
         setContentView(R.layout.activity_cafe_display);
 
         ImageView imageView = findViewById(R.id.cafeImage);
         AssetManager assetManager = getAssets();
-        String file = "img"+current+".jpg";
+        String file = "images/img"+current+".jpg";
 
         InputStream is = null;
         try {
@@ -73,9 +71,6 @@ public class CafeDisplay extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
-
 
         ArrayList<String> list = db.viewEatery(current);
 
@@ -100,13 +95,11 @@ public class CafeDisplay extends AppCompatActivity {
             fab.setImageResource(R.drawable.ic_star_unfavorited);
         }
 
-
         expandableListView = findViewById(R.id.expandableListView);
         expandableListDetail = ExpandableListDataPump.getData(current);
         expandableListTitle = new ArrayList<>(expandableListDetail.keySet());
         expandableListAdapter = new CustomExpandableListAdapter(this, expandableListTitle, expandableListDetail);
         expandableListView.setAdapter(expandableListAdapter);
-
 
         expandableListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
 
@@ -177,7 +170,13 @@ public class CafeDisplay extends AppCompatActivity {
         TextView payment = findViewById(R.id.payment_details);
         payment.setText(result);
 
-        findViewById(R.id.menu_header).setVisibility(View.VISIBLE);
+        if (current != 7&& current != 8 && current != 11){
+            findViewById(R.id.menu_header).setVisibility(View.VISIBLE);
+        }
+        else{
+            findViewById(R.id.menu_header).setVisibility(View.INVISIBLE);
+        }
+
 
         TextView loc = findViewById(R.id.location);
         loc.setText(db.getLocation(extras.getInt("id")));

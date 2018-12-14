@@ -37,7 +37,7 @@ public class DiningHallDisplayPage extends AppCompatActivity {
 
         ImageView imageView = findViewById(R.id.dhImage);
         AssetManager assetManager = getAssets();
-        String file = "img"+current+".jpg";
+        String file = "images/img"+current+".jpg";
 
         InputStream is = null;
         try {
